@@ -1,4 +1,14 @@
-#### Installation
+# 🐧 ARCHITECT TUTO 📜
+
+
+## Table des Matières
+1. [Tutoriel](#installation)
+2. [Jeux](#gaming)
+3. [Optimisation](#optimization)
+4. [Dépannage](#troubleshooting)
+5. [Communauté](#community)
+
+#### Installation <a name="installationy"/>
 
 > [!IMPORTANT]
 > Suivez les étapes avec minutie
@@ -555,12 +565,6 @@ Sources et liens utiles :
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaîne Youtube](https://www.youtube.com/@Cardiacman)
-
-## Contribution
-
-Les contributions à ce projet sont les bienvenues ! Si vous avez des suggestions, des rapports de bugs ou des contributions, veuillez ouvrir une [issue](https://github.com/Cardiacman13/Architect/issues) ou une demande Pull Request dans le dépôt.
-
-Comme vous pouvez le voir, ce projet est disponible en français, en anglais et en espagnol. Les traducteurs sont plus que bienvenus ! :people_holding_hands:
 
 ## 🙏 Remerciements
 
