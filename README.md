@@ -8,7 +8,7 @@
 4. [Dépannage](#troubleshooting)
 5. [Communauté](#community)
 
-#### Installation <a name="installationy"/>
+#### Installation <a name="installation"/>
 
 > [!IMPORTANT]
 > Suivez les étapes avec minutie
