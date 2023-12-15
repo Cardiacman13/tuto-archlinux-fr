@@ -125,7 +125,7 @@ Ajoutez chacune de ces lignes à la fin du fichier :
 pour yay :
 
 ```
-alias update-arch='yay -Syu && flatpak update'
+alias update-arch='yay && flatpak update'
 ```
 
 ```
@@ -135,7 +135,7 @@ alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 pour Paru :
 
 ```
-alias update-arch='paru -Syu && flatpak update'
+alias update-arch='paru && flatpak update'
 ```
 
 ```
@@ -393,7 +393,7 @@ sudo nano ~/.config/fish/config.fish    # 6. Créez un alias comme pour bash au 
 pour yay :
 
 ```
-alias update-arch='yay -Syu && flatpak update'
+alias update-arch='yay && flatpak update'
 ```
 
 ```
@@ -403,7 +403,7 @@ alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 pour Paru :
 
 ```
-alias update-arch='paru -Syu && flatpak update'
+alias update-arch='paru && flatpak update'
 ```
 
 ```
