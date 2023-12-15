@@ -43,7 +43,6 @@ Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
 #### 3. Archinstall
 ```
-pacman -Syu archinstall      # mettre à jour le script archinstall avant l'installation
 archinstall                 # pour lancer le script d'aide à l'installation pour arch linux
 ```
 **/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
