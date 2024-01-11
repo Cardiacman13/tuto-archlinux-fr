@@ -377,7 +377,7 @@ sudo systemctl enable --now cronie
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Setup Grub BTRFS sur Arch Linux.](https://youtu.be/EyhSUBwjPUY?si=cQ0TuGI76_M1TzTp)
 
-Permet de prendre des snapshots à chaque updates et de botter dessus à partir de grub.
+Permet de prendre des snapshots à chaque update et de booter dessus à partir de grub.
 
 Déjà comme son nom l'indique il faut avoir choisi grub comme bootloader et btrfs en file system.
 
@@ -403,7 +403,7 @@ On remplace `ExecStart=/usr/bin/grub-btrfsd --syslog /.snapshots` par `ExecStart
 
 crtl + x pour sauvegarder.
 
-Enfin on lance une fois Timeshift je conseille de laisser tout par défaut.
+Enfin on lance une fois Timeshift, je conseille de laisser tout par défaut.
 
 #### Fish
 
