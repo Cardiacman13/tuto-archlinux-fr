@@ -372,7 +372,39 @@ sudo pacman -S timeshift
 ```
 sudo systemctl enable --now cronie
 ```
-  
+
+### Grub BTRFS
+
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Setup Grub BTRFS sur Arch Linux.](https://youtu.be/EyhSUBwjPUY?si=cQ0TuGI76_M1TzTp)
+
+Permet de prendre des snapshots à chaque updates et de botter dessus à partir de grub.
+
+Déjà comme son nom l'indique il faut avoir choisi grub comme bootloader et btrfs en file system.
+
+On installe Timeshift comme vu à l'étape précedante. puis,
+
+```bash
+yay -S timeshift-autosnap grub-btrfs
+```
+
+On active le service brtfsd
+
+```bash
+sudo systemctl enable --now grub-btrfsd
+```
+
+On édite le service : 
+
+```bash
+sudo systemctl edit --full grub-btrfsd
+```
+
+On remplace `ExecStart=/usr/bin/grub-btrfsd --syslog /.snapshots` par `ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto`
+
+crtl + x pour sauvegarder.
+
+Enfin on lance une fois Timeshift je conseille de laisser tout par défaut.
+
 #### Fish
 
 [Fish](https://fishshell.com/) est un shell en ligne de commande conçu pour être interactif et convivial. Voir aussi [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet. Il remplace le shell par défaut, bash.
