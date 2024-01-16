@@ -15,36 +15,32 @@
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
-Pour toutes les étapes suivantes, lorsque vous avez un texte présenté de cette manière, cela indiquera une commande à taper dans votre terminal :
-
-```
-echo "Bonjour le monde !"       # Commande d'exemple
-```
-
 #### 1. Configurer le clavier en français
 
-```
+```sh
 loadkeys fr
 ```
 
 #### 2. Configurer votre Wi-Fi
 
-```
+```sh
 iwctl
 ```
     
 Puis (remplacez VOTRE-NOM-WIFI par le nom de votre wifi)
 
-```
+```sh
 station wlan0 connect VOTRE-NOM-WIFI (SSID)
 ```
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
 #### 3. Archinstall
-```
+
+```sh
 archinstall                 # pour lancer le script d'aide à l'installation pour arch linux
 ```
+
 **/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
     
 ### Post-installation
@@ -55,7 +51,7 @@ archinstall                 # pour lancer le script d'aide à l'installation pou
 
 Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation des téléchargements de paquets.
 
-```
+```sh
 sudo nano /etc/pacman.conf
 ```
 
@@ -81,7 +77,7 @@ Vous pouvez choisir entre **YAY** ou **Paru**
 
 [Yay](https://github.com/Jguer/yay)
    
-```
+```sh
 sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
@@ -90,14 +86,14 @@ makepkg -si
 
 Ajout du support pour les mises à jour des paquets git. (Normalement, cela ne doit être fait qu'une seule fois)
 
-```
+```sh
 yay -Y --gendb
 yay -Y --devel --save
 ```
 
 [Paru](https://github.com/Morganamilo/paru)
-   
-```
+
+```sh
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
@@ -106,16 +102,17 @@ makepkg -si
 
 Ajout du support pour les mises à jour des paquets git. (Normalement, cela ne doit être fait qu'une seule fois)
 
-```
+```sh
 paru --gendb
 ```
+
 #### 3. Alias de maintenance :
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
 Cette modification vous permet de simplement taper « update-arch » dans un terminal pour mettre à jour le système, « clean-arch » pour le nettoyer, ou « fix-key » en cas d'erreur avec les clés gpg.
 
-```
+```sh
 nano ~/.bashrc
 ```
   
@@ -123,31 +120,31 @@ Ajoutez chacune de ces lignes à la fin du fichier :
 
 pour yay :
 
-```
+```sh
 alias update-arch='yay && flatpak update'
 ```
 
-```
+```sh
 alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 ```
 
 pour Paru :
 
-```
+```sh
 alias update-arch='paru && flatpak update'
 ```
 
-```
+```sh
 alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 ```
 
 Pour tous : 
 
-```
+```sh
 alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist '
 ```
 
-```
+```sh
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 ```
    
@@ -155,19 +152,19 @@ Redémarrez le terminal.
 
 #### 4. Compilation multithread des paquets AUR :
 
-```
+```sh
 nano /etc/makepkg.conf
 ```
 
 Pour utiliser tous les threads, ajoutez :
 
-```
+```sh
 MAKEFLAGS="-j$(nproc)"
 ```
 
 Ou si, par exemple, vous souhaitez utiliser 6 threads :
 
-```
+```sh
 MAKEFLAGS="-j6"
 ```
 
@@ -179,12 +176,13 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 
 #### 1. Installer les composants de base :
 
-```
+```sh
 sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 Si vous avez un  <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [PC portable Intel / Nvidia](https://youtu.be/GhsP6btpiiw?si=ibWw_dQdty8_Q0jm) :
-```
+
+```sh
 sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
@@ -192,7 +190,7 @@ sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-
 
 Ce paramètre permet de lancer le module Nvidia au démarrage.
 
-```
+```sh
 sudo nano /etc/modprobe.d/nvidia.conf
 ```
 
@@ -206,31 +204,33 @@ Sauvegarder.
 
 **Optionnel**, à ne faire que si on remarque des problèmes au boot.
    
-```
+```sh
 sudo nano /etc/mkinitcpio.conf
 ```
 
 Modifiez la ligne MODULES=() pour :
 
-```
+```sh
 MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
 Si utilisation de btrfs :
 
-```
+```sh
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
 #### 4. Débloquer Wayland Si vous etes sur Gnome:
 
+```sh
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+```
 
 #### 5. Reconstruction de l'initramfs :
 
 Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de configurer le hook, nous devons déclencher manuellement la reconstruction de l'initramfs :
 
-```
+```sh
 sudo mkinitcpio -P
 ```
 
@@ -238,7 +238,7 @@ sudo mkinitcpio -P
 
 Installer les composants de base :
 
-```
+```sh
 sudo pacman -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
@@ -246,33 +246,37 @@ sudo pacman -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon 
 
 Installer les composants de base :
 
-```
+```sh
 sudo pacman -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
 #### Imprimantes
 - Essentiels
 
-```
+```sh
 sudo pacman -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
 sudo systemctl enable --now avahi-daemon cups
 ```
 
+```sh
+sudo systemctl disable systemd-resolved
+```
+
 - Pilotes
 
-```
+```sh
 sudo pacman -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds 
 ```
 
 - Imprimantes HP
 
-```
+```sh
 yay -S --needed python-pyqt5 hplip
 ```
 
 - Imprimantes Epson
 
-```
+```sh
 yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
 ```
 
@@ -280,7 +284,7 @@ yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-ink
 
 La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
 
-```
+```sh
 yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
@@ -289,7 +293,7 @@ sudo systemctl enable --now  bluetooth.service
 
 **/!\ Dites oui à tout pour écraser tout avec les nouveaux paquets. /!\**
 
-```
+```sh
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
@@ -299,13 +303,13 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 
 Ici, vous trouverez des codecs, utilitaires, polices, pilotes :
 
-```
-yay -S --needed gstreamer-vaapi gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade  libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
+```sh
+yay -S --needed gstreamer-vaapi gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade  libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-meslo-nerd ttf-droid duf btop  ntfs-3g fuse2fs exfatprogs fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Logiciels divers
 
-```
+```sh
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin openrgb-bin spotify
 ```
 
@@ -313,7 +317,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 Voici divers logiciels pour graphisme, vidéo (édition, support de codec), utilitaires d'interface graphique, etc.
 
-```
+```sh
 sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
@@ -321,7 +325,7 @@ sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwe
 La configuration par défaut peut bloquer l'accès aux imprimantes et autres appareils sur votre réseau local.
 Voici un petit lien pour vous aider : https://www.dsfc.net/infra/securite/configurer-firewalld/
 
-```
+```sh
 sudo pacman -S --needed --noconfirm firewalld python-pyqt5 python-capng
 sudo systemctl enable --now firewalld.service
 firewall-applet &
@@ -329,13 +333,13 @@ firewall-applet &
 
 #### Reflector pour la mise à jour automatique des miroirs
 
-```
+```sh
 yay -S reflector-simple
 ```
 
 Une commande pour générer une liste de miroirs, à faire une fois après la première installation et à répéter si vous voyagez, ou changez de pays, ou si vous trouvez le téléchargement des paquets trop lent, ou si vous rencontrez une erreur vous indiquant qu'un miroir est hors service :
 
-```
+```sh
 sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
@@ -348,7 +352,7 @@ sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save 
 Arch Update est un notificateur/aplicateur de mise à jour pour Arch Linux qui vous assiste dans les tâches importantes avant et après la mise à jour et qui inclut une icône cliquable (.desktop) pouvant être facilement intégrée à n'importe quel environnement de bureau/gestionnaire de fenêtres, dock, barre de statut/lançage ou menu d'application.
 Support optionnel pour les mises à jour des paquets AUR/Flatpak et les notifications de bureau.
 
-```
+```sh
 yay -S arch-update
 systemctl --user enable --now arch-update.timer
 ```
@@ -359,7 +363,7 @@ systemctl --user enable --now arch-update.timer
 
 **/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
 
-```
+```sh
 sudo pacman -S timeshift
 ```
 
@@ -369,7 +373,7 @@ sudo pacman -S timeshift
 
 - Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
 
-```
+```sh
 sudo systemctl enable --now cronie
 ```
 
@@ -383,19 +387,19 @@ Déjà comme son nom l'indique il faut avoir choisi grub comme bootloader et btr
 
 On installe Timeshift comme vu à l'étape précedante. puis,
 
-```bash
+```sh
 yay -S timeshift-autosnap grub-btrfs
 ```
 
 On active le service brtfsd
 
-```bash
+```sh
 sudo systemctl enable --now grub-btrfsd
 ```
 
 On édite le service : 
 
-```bash
+```sh
 sudo systemctl edit --full grub-btrfsd
 ```
 
@@ -411,43 +415,43 @@ Enfin on lance une fois Timeshift, je conseille de laisser tout par défaut.
 
 - Installez fish.
     
-```
+```sh
 sudo pacman -S fish                             # 1. installez fish
-chsh -s /usr/bin/fish                   # 2. Définissez-le par défaut.
-fish                                    # 3. Lancez fish ou redémarrez et il sera par défaut.
-fish_update_completions                 # 4. Mettez à jour les complétions.
-set -U fish_greeting                    # 5. Supprimez le message de bienvenue.
-sudo nano ~/.config/fish/config.fish    # 6. Créez un alias comme pour bash au début de ce tutoriel.
+chsh -s /usr/bin/fish                           # 2. Définissez-le par défaut.
+fish                                            # 3. Lancez fish ou redémarrez et il sera par défaut.
+fish_update_completions                         # 4. Mettez à jour les complétions.
+set -U fish_greeting                            # 5. Supprimez le message de bienvenue.
+sudo nano ~/.config/fish/config.fish            # 6. Créez un alias comme pour bash au début de ce tutoriel.
 ```
 - Ajoutez ensuite les alias suivants entre if et end :
 
 pour yay :
 
-```
+```sh
 alias update-arch='yay && flatpak update'
 ```
 
-```
+```sh
 alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 ```
 
 pour Paru :
 
-```
+```sh
 alias update-arch='paru && flatpak update'
 ```
 
-```
+```sh
 alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 ```
 
 pour tous : 
 
-```
+```sh
 alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 ```
 
-```
+```sh
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 ```
 
@@ -458,7 +462,7 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 ### Steam
 Notez que les pilotes AMD ou Nvidia doivent être installés au préalable comme mentionné dans la section [SUPPORT MATÉRIEL](#HARDWARE-SUPPORT).
 
-```
+```sh
 sudo pacman -S steam
 ```
 
@@ -467,7 +471,7 @@ sudo pacman -S steam
 Lutris est un gestionnaire de jeux FOSS (Free, Open Source) pour les systèmes d'exploitation basés sur Linux.
 Lutris permet de rechercher un jeu ou une plateforme (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) et propose un script d'installation qui configurera ce qui est nécessaire pour que votre choix fonctionne avec Wine ou Proton.
 
-```
+```sh
 sudo pacman -S lutris wine-staging
 ```
 
@@ -479,13 +483,13 @@ Vidéo supplémentaire :
 
 Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X ([xpadneo](https://github.com/atar-axis/xpadneo))
 
-```
+```sh
 yay -S xpadneo-dkms-git
 ```
 
 Pilote Linux avancé pour manettes PS5
 
-```
+```sh
 yay -S dualsensectl-git
 ```
 
@@ -495,7 +499,7 @@ yay -S dualsensectl-git
 C'est l'outil dont vous avez besoin si vous voulez voir vos FPS en jeu, votre charge CPU ou GPU, etc. Ou même enregistrer ces résultats dans un fichier.
 Ici, nous installons GOverlay qui est une interface graphique pour configurer MangoHud.
 
-```
+```sh
 sudo pacman -S goverlay
 ```
 
@@ -507,13 +511,13 @@ Nous augmentons la valeur par défaut de cette variable, permettant le stockage 
 
 - Ajouter dans :
 
-```
+```sh
 sudo nano /etc/sysctl.d/99-sysctl.conf
 ``` 
 
 la ligne suivante:
 
-` 
+`
 vm.max_map_count=2147483642
 `
 
@@ -529,7 +533,7 @@ vm.max_map_count=2147483642
 Vidéo associée :
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Améliorer ses perfs](https://youtu.be/43yYIWMnDJA)
 
-```
+```sh
 git clone https://github.com/Frogging-Family/linux-tkg.git
 cd linux-tkg
 makepkg -si
@@ -543,7 +547,7 @@ makepkg -si
 Comme le noyau TKG, mais pour Mesa, une version patchée pour ajouter quelques correctifs et optimisations.
 Très utile pour les joueurs AMD, sans intérêt pour les joueurs Nvidia.
 
-```
+```sh
 git clone https://github.com/Frogging-Family/mesa-git.git
 cd mesa-git
 makepkg -si
@@ -560,7 +564,7 @@ Nvidia-all est une intégration du pilote nvidia par TkG. Il comprend des patchs
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia, regardez ça !](https://youtu.be/T0laE8gPtfY)
 
-```
+```sh
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
 makepkg -si
@@ -574,7 +578,7 @@ Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploie
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
 
-```
+```sh
 sudo pacman -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
