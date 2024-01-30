@@ -239,7 +239,7 @@ sudo mkinitcpio -P
 Installer les composants de base :
 
 ```sh
-sudo pacman -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
+sudo pacman -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 #### INTEL (ne pas faire si Nvidia)
