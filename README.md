@@ -481,10 +481,10 @@ Vidéo supplémentaire :
 
 ### Support avancé de manettes
 
-Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X ([xpadneo](https://github.com/atar-axis/xpadneo))
+Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```sh
-yay -S xpadneo-dkms-git
+yay -S xpadneo-dkms-git xone-dkms-git
 ```
 
 Pilote Linux avancé pour manettes PS5
