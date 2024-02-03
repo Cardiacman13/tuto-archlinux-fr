@@ -202,7 +202,11 @@ Sauvegarder.
    
 #### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
 
-**Optionnel**, à ne faire que si on remarque des problèmes au boot.
+> [!WARNING]
+> Cette étape est destinée aux utilisateurs avancés :star: :
+> **Optionnel**, à ne faire que si on remarque des problèmes au boot.
+> Augmente drastiquement la taille de l'initramfs empéchant d'installer plus de 1 kernel si on a laissé les options par défaut de archinstall !
+
    
 ```sh
 sudo nano /etc/mkinitcpio.conf
