@@ -172,7 +172,10 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 
 ### SUPPORT MATÉRIEL
 
-#### NVIDIA (rester sur X11 au moins jusqu'à la sortie de KDE 6)
+#### NVIDIA
+
+> [!IMPORTANT]
+> Rester sur X11 au moins jusqu'à la sortie de KDE 6
 
 #### 1. Installer les composants de base :
 
