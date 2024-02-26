@@ -207,7 +207,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Ajouter:
 
-`options nvidia-drm modeset=1 fbdev=1`
+`options nvidia-drm modeset=1`
 
 Sauvegarder.
    
