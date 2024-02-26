@@ -189,7 +189,15 @@ Si vous avez un  <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blo
 sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
-#### 2. Activer nvidia-drm modeset=1 :
+#### 3. Activer les services Nvidia :
+
+Services pour gerer la veeille, l'hibernation et la gestion dynamique de l'alimentation.
+
+```sh
+sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service
+```
+
+#### 3. Activer nvidia-drm modeset=1 :
 
 Ce paramètre permet de lancer le module Nvidia au démarrage.
 
@@ -203,7 +211,7 @@ Ajouter:
 
 Sauvegarder.
    
-#### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
+#### 4. Charger les modules Nvidia en priorité au lancement d'Arch :
 
 > [!WARNING]
 > Cette étape est destinée aux utilisateurs avancés :star: :
