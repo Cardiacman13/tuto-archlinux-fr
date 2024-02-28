@@ -191,10 +191,10 @@ sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-
 
 #### 3. Activer les services Nvidia :
 
-Services pour gerer la veeille, l'hibernation et la gestion dynamique de l'alimentation.
+Services pour gerer la veille et l'hibernation.
 
 ```sh
-sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service
+sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service
 ```
 
 #### 3. Activer nvidia-drm modeset=1 :
@@ -254,7 +254,7 @@ sudo mkinitcpio -P
 Installer les composants de base :
 
 ```sh
-sudo pacman -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+sudo pacman -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 #### INTEL (ne pas faire si Nvidia)
