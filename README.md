@@ -175,7 +175,7 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 #### NVIDIA
 
 > [!IMPORTANT]
-> Rester sur X11 au moins jusqu'à la sortie de KDE 6
+>  Quel que qoit le DE rester sur X11 au moins jusqu'àau merge de ce patch : [explicit-sync](https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/967)
 
 #### 1. Installer les composants de base :
 
