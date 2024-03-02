@@ -1,5 +1,6 @@
 # 🐧 ARCHITECT TUTO 📜
 
+---
 
 ## Table des Matières
 1. [Tutoriel](#installation)
@@ -7,6 +8,8 @@
 3. [Optimisation](#optimization)
 4. [Dépannage](#troubleshooting)
 5. [Communauté](#community)
+
+---
 
 #### Installation <a name="installation"/>
 
@@ -42,10 +45,14 @@ archinstall                 # pour lancer le script d'aide à l'installation pou
 ```
 
 **/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
-    
+
+---
+
 ### Post-installation
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
+
+---
 
 #### 1. Optimiser pacman
 
@@ -66,6 +73,7 @@ Color <-
 VerbosePkgLists <- 
 ParallelDownloads = 5 <-
 ```
+---
 
 #### 2. **Installation d'un AUR helper**
 
@@ -105,6 +113,8 @@ Ajout du support pour les mises à jour des paquets git. (Normalement, cela ne d
 ```sh
 paru --gendb
 ```
+
+---
 
 #### 3. Alias de maintenance :
 
@@ -150,6 +160,8 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
    
 Redémarrez le terminal.
 
+---
+
 #### 4. Compilation multithread des paquets AUR :
 
 ```sh
@@ -170,7 +182,11 @@ MAKEFLAGS="-j6"
 
 Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est conseillé d'avoir 2 Go de RAM par cœur utilisé.
 
+---
+
 ### SUPPORT MATÉRIEL
+
+---
 
 #### NVIDIA
 
@@ -249,7 +265,9 @@ Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de confi
 sudo mkinitcpio -P
 ```
 
-#### AMD (ne pas faire si Nvidia)
+---
+
+#### AMD
 
 Installer les composants de base :
 
@@ -257,13 +275,17 @@ Installer les composants de base :
 sudo pacman -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### INTEL (ne pas faire si Nvidia)
+---
+
+#### INTEL
 
 Installer les composants de base :
 
 ```sh
 sudo pacman -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
+
+---
 
 #### Imprimantes
 - Essentiels
@@ -295,6 +317,8 @@ yay -S --needed python-pyqt5 hplip
 yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
 ```
 
+---
+
 #### Bluetooth
 
 La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
@@ -304,6 +328,8 @@ yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 
+---
+
 #### [PipeWire](https://pipewire.org/) (son)
 
 **/!\ Dites oui à tout pour écraser tout avec les nouveaux paquets. /!\**
@@ -312,7 +338,11 @@ sudo systemctl enable --now  bluetooth.service
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
+---
+
 ### LOGICIEL DE BASE
+
+---
 
 #### Composants de base
 
@@ -322,11 +352,15 @@ Ici, vous trouverez des codecs, utilitaires, polices, pilotes :
 yay -S --needed gstreamer-vaapi gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade  libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-meslo-nerd ttf-droid duf btop  ntfs-3g fuse2fs exfatprogs fuse2 fuse3 bash-completion man-db man-pages
 ```
 
+---
+
 #### Logiciels divers
 
 ```sh
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin openrgb-bin spotify
 ```
+
+---
 
 #### Logiciels KDE
 
@@ -335,6 +369,8 @@ Voici divers logiciels pour graphisme, vidéo (édition, support de codec), util
 ```sh
 sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
+
+---
 
 #### Pare-feu
 La configuration par défaut peut bloquer l'accès aux imprimantes et autres appareils sur votre réseau local.
@@ -345,6 +381,8 @@ sudo pacman -S --needed --noconfirm firewalld python-pyqt5 python-capng
 sudo systemctl enable --now firewalld.service
 firewall-applet &
 ```
+
+---
 
 #### Reflector pour la mise à jour automatique des miroirs
 
@@ -357,6 +395,8 @@ Une commande pour générer une liste de miroirs, à faire une fois après la pr
 ```sh
 sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
+
+---
 
 #### Arch Update
 
@@ -371,6 +411,8 @@ Support optionnel pour les mises à jour des paquets AUR/Flatpak et les notifica
 yay -S arch-update
 systemctl --user enable --now arch-update.timer
 ```
+
+---
 
 #### Timeshift
 
@@ -391,6 +433,8 @@ sudo pacman -S timeshift
 ```sh
 sudo systemctl enable --now cronie
 ```
+
+---
 
 ### Grub BTRFS
 
@@ -423,6 +467,8 @@ On remplace `ExecStart=/usr/bin/grub-btrfsd --syslog /.snapshots` par `ExecStart
 crtl + x pour sauvegarder.
 
 Enfin on lance une fois Timeshift, je conseille de laisser tout par défaut.
+
+---
 
 #### Fish
 
@@ -474,12 +520,16 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 
 ## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/game-console.png" width="30" height="30"> **Améliorez votre Expérience de Jeu** <a name="gaming"/>
 
+---
+
 ### Steam
 Notez que les pilotes AMD ou Nvidia doivent être installés au préalable comme mentionné dans la section [SUPPORT MATÉRIEL](#HARDWARE-SUPPORT).
 
 ```sh
 sudo pacman -S steam
 ```
+
+---
 
 ### Lutris
 
@@ -493,6 +543,8 @@ sudo pacman -S lutris wine-staging
 Vidéo supplémentaire :
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Configuration de Lutris pour ordinateur portable Intel/Nvidia](https://www.youtube.com/watch?v=Am3pgTXiUAA)
+
+---
 
 ### Support avancé de manettes
 
@@ -508,6 +560,8 @@ Pilote Linux avancé pour manettes PS5
 yay -S dualsensectl-git
 ```
 
+---
+
 ### Affichage des performances en jeu
 
 [MangoHud](https://wiki.archlinux.org/title/MangoHud) est une superposition Vulkan et OpenGL qui permet de surveiller les performances du système dans les applications et d'enregistrer des métriques pour le benchmarking.
@@ -517,6 +571,8 @@ Ici, nous installons GOverlay qui est une interface graphique pour configurer Ma
 ```sh
 sudo pacman -S goverlay
 ```
+
+---
 
 ### Amélioration de la compatibilité des jeux Windows
 
@@ -536,7 +592,11 @@ la ligne suivante:
 vm.max_map_count=2147483642
 `
 
+---
+
 ## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimization"/>
+
+---
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
@@ -554,6 +614,8 @@ cd linux-tkg
 makepkg -si
 ```
 
+---
+
 ### [MESA-TKG](https://github.com/Frogging-Family/mesa-git)
 
 > [!WARNING]
@@ -569,6 +631,8 @@ makepkg -si
 ```
 
 Dites oui à tout pour tout écraser avec les nouveaux paquets.
+
+---
 
 ### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all)
 
@@ -587,6 +651,8 @@ makepkg -si
 
 Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
+---
+
 ### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
 Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est promu comme offrant un environnement "sandbox" dans lequel les utilisateurs peuvent exécuter des logiciels isolément du reste du système.
@@ -598,6 +664,8 @@ sudo pacman -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
+---
+
 ## Dépannage <a name="troubleshooting"/>
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus communs.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
@@ -607,6 +675,8 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 - Pour de l'aide, visitez le Discord GLF (fr/en) : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
+---
+
 ## Sources <a name="community"/>
 
 Sources et liens utiles :
@@ -615,6 +685,8 @@ Sources et liens utiles :
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaîne Youtube](https://www.youtube.com/@Cardiacman)
+
+---
 
 ## 🙏 Remerciements
 
