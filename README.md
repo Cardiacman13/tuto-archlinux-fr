@@ -664,9 +664,6 @@ sudo pacman -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
-
-Bien sûr, voici un tutoriel pour configurer un multiboot sur votre système Linux en français :
-
 ### Tutoriel : Configuration du Multiboot avec grub
 
 #### Introduction
