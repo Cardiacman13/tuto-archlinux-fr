@@ -664,6 +664,52 @@ sudo pacman -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
+
+Bien sûr, voici un tutoriel pour configurer un multiboot sur votre système Linux en français :
+
+### Tutoriel : Configuration du Multiboot avec grub
+
+#### Introduction
+
+Le multiboot est un moyen de démarrer plusieurs systèmes d'exploitation sur un même ordinateur. Dans ce tutoriel, nous allons utiliser GRUB, le gestionnaire de démarrage standard pour de nombreuses distributions Linux, pour configurer un multiboot.
+
+1. **Modifier la Configuration de GRUB** :
+
+   Ouvrez un terminal et exécutez la commande suivante pour ouvrir le fichier de configuration de GRUB :
+   ```bash
+   sudo nano /etc/default/grub
+   ```
+
+   Recherchez la ligne contenant `# GRUB_DISABLE_OS_PROBER=false` et supprimez le caractère `#` au début de la ligne pour activer la détection automatique d'autres systèmes d'exploitation.
+
+   Enregistrez les modifications et quittez l'éditeur de texte.
+
+2. **Installer `os-prober`** :
+
+   Utilisez votre gestionnaire de paquets pour installer `os-prober`, un utilitaire qui permet à GRUB de détecter d'autres systèmes d'exploitation :
+   ```bash
+   sudo pacman -S os-prober
+   ```
+
+3. **Exécuter `os-prober`** :
+
+   Exécutez `os-prober` pour rechercher d'autres systèmes d'exploitation installés sur votre ordinateur :
+   ```bash
+   sudo os-prober
+   ```
+
+4. **Générer la Configuration de GRUB** :
+
+   Utilisez la commande suivante pour générer la configuration de GRUB basée sur les résultats de `os-prober` :
+   ```bash
+   sudo grub-mkconfig -o /boot/grub/grub.cfg
+   ```
+
+#### Conclusion
+
+Une fois ces étapes terminées, redémarrez votre système pour appliquer les modifications. Vous devriez maintenant voir une option pour chaque système d'exploitation détecté lors du démarrage de votre ordinateur.
+
+
 ---
 
 ## Dépannage <a name="troubleshooting"/>
