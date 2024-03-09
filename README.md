@@ -2,10 +2,6 @@
 
 ---
 
-Pour inclure des liens hypertextes dans chaque section de la table des matières pour un document Markdown (comme semble être le cas ici), il est important de noter que les liens directs ne fonctionneront pas puisque cela dépend de la plateforme sur laquelle le Markdown est visualisé (par exemple, GitHub, GitLab, etc.). Cependant, je vais structurer la table des matières avec des ancres qui peuvent être utilisées dans la plupart des systèmes de documentation Markdown pour naviguer à l'intérieur du document.
-
-Notez que pour que ces ancres fonctionnent, chaque section du document doit être marquée avec un titre correspondant précédé par un identifiant d'ancre. Je vais illustrer cela avec des exemples de syntaxe pour les ancres.
-
 ## **Table des Matières avec Ancres Markdown**
 
 1. **[Installation](#installation)**
@@ -60,8 +56,6 @@ Notez que pour que ces ancres fonctionnent, chaque section du document doit êtr
 
 8. **[Remerciements](#remerciements)**
    - [Remerciements à la communauté Arch Linux et aux développeurs des outils utilisés](#remerciements-à-la-communauté-arch-linux-et-aux-développeurs-des-outils-utilisés)
-
-Notez que cette table des matières suppose que des identifiants d'ancres correspondant aux titres des sections seront ajoutés dans le document. Pour ce faire, vous devrez ajouter un tag HTML `<a name="identifiant"></a>` avant chaque titre de section ou utiliser des fonctionnalités spécifiques de la plateforme de documentation pour définir ces ancres.
 
 ---
 
