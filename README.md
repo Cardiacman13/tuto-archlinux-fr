@@ -757,6 +757,9 @@ Une fois ces étapes terminées, redémarrez votre système pour appliquer les m
 ---
 
 ## Dépannage <a name="dépannage"></a>
+
+- **[GLF-Astuces](https://github.com/Gaming-Linux-FR/glf-astuces/tree/main)** : Astuces diverses, ne concernant pas une distribution spécifique.
+
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus communs.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 4 Maintenance / mise à jour](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
