@@ -2,12 +2,66 @@
 
 ---
 
-## Table des Matières
-1. [Tutoriel](#installation)
-2. [Jeux](#gaming)
-3. [Optimisation](#optimization)
-4. [Dépannage](#troubleshooting)
-5. [Communauté](#community)
+Pour inclure des liens hypertextes dans chaque section de la table des matières pour un document Markdown (comme semble être le cas ici), il est important de noter que les liens directs ne fonctionneront pas puisque cela dépend de la plateforme sur laquelle le Markdown est visualisé (par exemple, GitHub, GitLab, etc.). Cependant, je vais structurer la table des matières avec des ancres qui peuvent être utilisées dans la plupart des systèmes de documentation Markdown pour naviguer à l'intérieur du document.
+
+Notez que pour que ces ancres fonctionnent, chaque section du document doit être marquée avec un titre correspondant précédé par un identifiant d'ancre. Je vais illustrer cela avec des exemples de syntaxe pour les ancres.
+
+## **Table des Matières avec Ancres Markdown**
+
+1. **[Installation](#installation)**
+   - [Configurer le clavier en français](#configurer-le-clavier-en-français)
+   - [Configurer votre Wi-Fi](#configurer-votre-wi-fi)
+   - [Utilisation d'archinstall](#utilisation-darchinstall)
+   - [Post-installation](#post-installation)
+
+2. **[Post-installation](#post-installation-1)**
+   - [Optimiser pacman](#optimiser-pacman)
+   - [Installation d'un AUR helper](#installation-dun-aur-helper)
+   - [Alias de maintenance](#alias-de-maintenance)
+   - [Compilation multithread des paquets AUR](#compilation-multithread-des-paquets-aur)
+
+3. **[Support matériel](#support-matériel)**
+   - [Nvidia](#nvidia)
+   - [AMD](#amd)
+   - [Intel](#intel)
+   - [Imprimantes](#imprimantes)
+   - [Bluetooth](#bluetooth)
+   - [PipeWire (son)](#pipewire-son)
+   - [Logiciel de base](#logiciel-de-base)
+   - [Pare-feu](#pare-feu)
+   - [Reflector pour la mise à jour automatique des miroirs](#reflector-pour-la-mise-à-jour-automatique-des-miroirs)
+   - [Arch Update](#arch-update)
+   - [Timeshift](#timeshift)
+   - [Grub BTRFS](#grub-btrfs)
+   - [Fish](#fish)
+
+4. **[Améliorez votre Expérience de Jeu](#améliorez-votre-expérience-de-jeu)**
+   - [Steam](#steam)
+   - [Lutris](#lutris)
+   - [Support avancé de manettes](#support-avancé-de-manettes)
+   - [Affichage des performances en jeu](#affichage-des-performances-en-jeu)
+   - [Amélioration de la compatibilité des jeux Windows](#amélioration-de-la-compatibilité-des-jeux-windows)
+
+5. **[Optimisation](#optimisation)**
+   - [Kernel TKG](#kernel-tkg)
+   - [MESA-TKG](#mesa-tkg)
+   - [NVIDIA-ALL](#nvidia-all)
+   - [Installation Flatpak](#installation-flatpak)
+   - [Tutoriel : Configuration du Multiboot avec grub](#tutoriel--configuration-du-multiboot-avec-grub)
+
+6. **[Dépannage](#dépannage)**
+   - [Liens utiles et vidéos pour résoudre les problèmes communs](#liens-utiles-et-vidéos-pour-résoudre-les-problèmes-communs)
+
+7. **[Communauté et Sources](#communauté-et-sources)**
+   - [ArchWiki](#archwiki)
+   - [Site GLF](#site-glf)
+   - [Discord GLF](#discord-glf)
+   - [Chaîne Youtube de Cardiacman](#chaîne-youtube-de-cardiacman)
+
+8. **[Remerciements](#remerciements)**
+   - [Remerciements à la communauté Arch Linux et aux développeurs des outils utilisés](#remerciements-à-la-communauté-arch-linux-et-aux-développeurs-des-outils-utilisés)
+
+Notez que cette table des matières suppose que des identifiants d'ancres correspondant aux titres des sections seront ajoutés dans le document. Pour ce faire, vous devrez ajouter un tag HTML `<a name="identifiant"></a>` avant chaque titre de section ou utiliser des fonctionnalités spécifiques de la plateforme de documentation pour définir ces ancres.
 
 ---
 
@@ -18,13 +72,13 @@
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
-#### 1. Configurer le clavier en français
+#### 1. Configurer le clavier en français <a name="configurer-le-clavier-en-français"></a>
 
 ```sh
 loadkeys fr
 ```
 
-#### 2. Configurer votre Wi-Fi
+#### 2. Configurer votre Wi-Fi <a name="configurer-votre-wi-fi"></a>
 
 ```sh
 iwctl
@@ -38,7 +92,7 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
-#### 3. Archinstall
+#### 3. Archinstall <a name="utilisation-darchinstall"></a>
 
 ```sh
 archinstall                 # pour lancer le script d'aide à l'installation pour arch linux
@@ -48,13 +102,13 @@ archinstall                 # pour lancer le script d'aide à l'installation pou
 
 ---
 
-### Post-installation
+### Post-installation <a name="post-installation"></a>
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 ---
 
-#### 1. Optimiser pacman
+#### 1. Optimiser pacman <a name="optimiser-pacman"></a>
 
 Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation des téléchargements de paquets.
 
@@ -75,7 +129,7 @@ ParallelDownloads = 5 <-
 ```
 ---
 
-#### 2. **Installation d'un AUR helper**
+#### 2. **Installation d'un AUR helper** <a name="installation-dun-aur-helper"></a>
 
 Les AUR helpers sont des outils pratiques pour gérer l'installation et la mise à jour des logiciels sur les systèmes basés sur Arch Linux.
 Yay et paru facilitent particulièrement l'utilisation du dépôt AUR, un dépôt géré par la communauté qui étend considérablement la bibliothèque de logiciels disponible. Cela inclut la compilation de ces programmes à partir de leur source, à moins que "-bin" ne soit spécifié à la fin de leur nom.
@@ -116,7 +170,7 @@ paru --gendb
 
 ---
 
-#### 3. Alias de maintenance :
+#### 3. Alias de maintenance : <a name="alias-de-maintenance"></a>
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
@@ -162,7 +216,7 @@ Redémarrez le terminal.
 
 ---
 
-#### 4. Compilation multithread des paquets AUR :
+#### 4. Compilation multithread des paquets AUR : <a name="compilation-multithread-des-paquets-aur"></a>
 
 ```sh
 nano /etc/makepkg.conf
@@ -184,11 +238,11 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 
 ---
 
-### SUPPORT MATÉRIEL
+### SUPPORT MATÉRIEL <a name="support-matériel"></a>
 
 ---
 
-#### NVIDIA
+#### NVIDIA <a name="nvidia"></a>
 
 > [!IMPORTANT]
 >  Quel que soit le DE restez sur X11 au moins jusqu'au merge de ce patch : [explicit-sync](https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/967)
@@ -267,7 +321,7 @@ sudo mkinitcpio -P
 
 ---
 
-#### AMD
+#### AMD <a name="amd"></a>
 
 Installer les composants de base :
 
@@ -277,7 +331,7 @@ sudo pacman -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan
 
 ---
 
-#### INTEL
+#### INTEL <a name="intel"></a>
 
 Installer les composants de base :
 
@@ -287,7 +341,7 @@ sudo pacman -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-i
 
 ---
 
-#### Imprimantes
+#### Imprimantes <a name="imprimantes"></a>
 - Essentiels
 
 ```sh
@@ -319,7 +373,7 @@ yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-ink
 
 ---
 
-#### Bluetooth
+#### Bluetooth <a name="bluetooth"></a>
 
 La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
 
@@ -330,7 +384,7 @@ sudo systemctl enable --now  bluetooth.service
 
 ---
 
-#### [PipeWire](https://pipewire.org/) (son)
+#### [PipeWire](https://pipewire.org/)  <a name="pipewire"></a>
 
 **/!\ Dites oui à tout pour écraser tout avec les nouveaux paquets. /!\**
 
@@ -340,7 +394,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 
 ---
 
-### LOGICIEL DE BASE
+### LOGICIEL DE BASE <a name="logiciel-de-base"></a>
 
 ---
 
@@ -372,7 +426,7 @@ sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwe
 
 ---
 
-#### Pare-feu
+#### Pare-feu <a name="pare-feu"></a>
 La configuration par défaut peut bloquer l'accès aux imprimantes et autres appareils sur votre réseau local.
 Voici un petit lien pour vous aider : https://www.dsfc.net/infra/securite/configurer-firewalld/
 
@@ -384,7 +438,7 @@ firewall-applet &
 
 ---
 
-#### Reflector pour la mise à jour automatique des miroirs
+#### Reflector pour la mise à jour automatique des miroirs <a name="reflector-pour-la-mise-à-jour-automatique-des-miroirs"></a>
 
 ```sh
 yay -S reflector-simple
@@ -398,7 +452,7 @@ sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save 
 
 ---
 
-#### Arch Update
+#### Arch Update <a name="arch-update"></a>
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch-Update  : Notifie les updates de Arch et aide aux tâches importantes avant et après l'update.](https://youtu.be/QkOkX70SEmo?si=EwB-rSTV5dMNbv5D)
 
@@ -414,7 +468,7 @@ systemctl --user enable --now arch-update.timer
 
 ---
 
-#### Timeshift
+#### Timeshift <a name="timeshift"></a>
 
 - [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
 
@@ -436,7 +490,7 @@ sudo systemctl enable --now cronie
 
 ---
 
-### Grub BTRFS
+### Grub BTRFS <a name="timeshift"></a>
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Setup Grub BTRFS sur Arch Linux.](https://youtu.be/EyhSUBwjPUY?si=cQ0TuGI76_M1TzTp)
 
@@ -470,7 +524,7 @@ Enfin on lance une fois Timeshift, je conseille de laisser tout par défaut.
 
 ---
 
-#### Fish
+#### Fish <a name="fish"></a>
 
 [Fish](https://fishshell.com/) est un shell en ligne de commande conçu pour être interactif et convivial. Voir aussi [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet. Il remplace le shell par défaut, bash.
 
@@ -518,11 +572,11 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 
 - ***Redémarrez sauf si fait à l'étape 3***, les alias de tout type ne fonctionnent qu'après le redémarrage du terminal.
 
-## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/game-console.png" width="30" height="30"> **Améliorez votre Expérience de Jeu** <a name="gaming"/>
+## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/game-console.png" width="30" height="30"> **Améliorez votre Expérience de Jeu** <a name="améliorez-votre-expérience-de-jeu"></a>
 
 ---
 
-### Steam
+### Steam <a name="steam"></a>
 Notez que les pilotes AMD ou Nvidia doivent être installés au préalable comme mentionné dans la section [SUPPORT MATÉRIEL](#HARDWARE-SUPPORT).
 
 ```sh
@@ -531,7 +585,7 @@ sudo pacman -S steam
 
 ---
 
-### Lutris
+### Lutris <a name="lutris"></a>
 
 Lutris est un gestionnaire de jeux FOSS (Free, Open Source) pour les systèmes d'exploitation basés sur Linux.
 Lutris permet de rechercher un jeu ou une plateforme (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) et propose un script d'installation qui configurera ce qui est nécessaire pour que votre choix fonctionne avec Wine ou Proton.
@@ -546,7 +600,7 @@ Vidéo supplémentaire :
 
 ---
 
-### Support avancé de manettes
+### Support avancé de manettes <a name="support-avancé-de-manettes"></a>
 
 Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
@@ -562,7 +616,7 @@ yay -S dualsensectl-git
 
 ---
 
-### Affichage des performances en jeu
+### Affichage des performances en jeu <a name="affichage-des-performances-en-jeu"></a>
 
 [MangoHud](https://wiki.archlinux.org/title/MangoHud) est une superposition Vulkan et OpenGL qui permet de surveiller les performances du système dans les applications et d'enregistrer des métriques pour le benchmarking.
 C'est l'outil dont vous avez besoin si vous voulez voir vos FPS en jeu, votre charge CPU ou GPU, etc. Ou même enregistrer ces résultats dans un fichier.
@@ -574,7 +628,7 @@ sudo pacman -S goverlay
 
 ---
 
-### Amélioration de la compatibilité des jeux Windows
+### Amélioration de la compatibilité des jeux Windows <a name="affichage-des-performances-en-jeu"></a>
 
 Nous augmentons la valeur par défaut de cette variable, permettant le stockage de plus de "zones de mappage mémoire". La valeur par défaut est très basse. L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam (Voir [ProtonDB](https://www.protondb.com/)), sachant que certains jeux mal optimisés ont tendance à atteindre rapidement cette limite, ce qui peut entraîner un crash.
 
@@ -594,13 +648,12 @@ vm.max_map_count=2147483642
 
 ---
 
-## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimization"/>
+## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimisation"></a>
 
 ---
 
-### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
+### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) <a name="kernel-tkg"></a>
 
-> [!WARNING]
 > Cette étape est destinée aux utilisateurs avancés :star:
 
 [KERNEL TKG](https://github.com/Frogging-Family) est un noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
@@ -616,7 +669,7 @@ makepkg -si
 
 ---
 
-### [MESA-TKG](https://github.com/Frogging-Family/mesa-git)
+### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) <a name="mesa-tkg"></a>
 
 > [!WARNING]
 > Cette étape est destinée aux utilisateurs avancés :star:
@@ -634,7 +687,7 @@ Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
 ---
 
-### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all)
+### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) <a name="nvidia-all"></a>
 
 > [!WARNING]
 > Cette étape est destinée aux utilisateurs avancés :star:
@@ -653,7 +706,7 @@ Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
 ---
 
-### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
+### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak) <a name="installation-flatpak"></a>
 
 Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est promu comme offrant un environnement "sandbox" dans lequel les utilisateurs peuvent exécuter des logiciels isolément du reste du système.
 
@@ -664,7 +717,7 @@ sudo pacman -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
-### Tutoriel : Configuration du Multiboot avec grub
+### Tutoriel : Configuration du Multiboot avec grub <a name="tutoriel--configuration-du-multiboot-avec-grub"></a>
 
 #### Introduction
 
@@ -709,7 +762,7 @@ Une fois ces étapes terminées, redémarrez votre système pour appliquer les m
 
 ---
 
-## Dépannage <a name="troubleshooting"/>
+## Dépannage <a name="dépannage"></a>
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus communs.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 4 Maintenance / mise à jour](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
@@ -720,7 +773,7 @@ Une fois ces étapes terminées, redémarrez votre système pour appliquer les m
 
 ---
 
-## Sources <a name="community"/>
+## Sources <a name="communauté-et-sources"></a>
 
 Sources et liens utiles :
 - [ArchWiki](https://wiki.archlinux.org/)
@@ -731,7 +784,7 @@ Sources et liens utiles :
 
 ---
 
-## 🙏 Remerciements
+## 🙏 Remerciements <a name="remerciements"></a>
 
 - L'équipe d'[Arch Linux](https://archlinux.org/) pour leur travail remarquable.
 - La communauté Arch Linux pour leur documentation exceptionnelle.
