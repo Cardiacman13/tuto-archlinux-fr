@@ -22,7 +22,7 @@
    - [Intel](#intel)
    - [Imprimantes](#imprimantes)
    - [Bluetooth](#bluetooth)
-   - [PipeWire (son)](#pipewire-son)
+   - [PipeWire](#pipewire)
    - [Logiciel de base](#logiciel-de-base)
    - [Pare-feu](#pare-feu)
    - [Reflector pour la mise à jour automatique des miroirs](#reflector-pour-la-mise-à-jour-automatique-des-miroirs)
