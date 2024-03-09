@@ -10,7 +10,7 @@
    - [Utilisation d'archinstall](#utilisation-darchinstall)
    - [Post-installation](#post-installation)
 
-2. **[Post-installation](#post-installation-1)**
+2. **[Post-installation](#post-installation)**
    - [Optimiser pacman](#optimiser-pacman)
    - [Installation d'un AUR helper](#installation-dun-aur-helper)
    - [Alias de maintenance](#alias-de-maintenance)
@@ -36,7 +36,7 @@
    - [Lutris](#lutris)
    - [Support avancé de manettes](#support-avancé-de-manettes)
    - [Affichage des performances en jeu](#affichage-des-performances-en-jeu)
-   - [Amélioration de la compatibilité des jeux Windows](#amélioration-de-la-compatibilité-des-jeux-windows)
+   - [Amélioration de la compatibilité des jeux Windows](#amélioration-compatibilité)
 
 5. **[Optimisation](#optimisation)**
    - [Kernel TKG](#kernel-tkg)
@@ -46,16 +46,10 @@
    - [Tutoriel : Configuration du Multiboot avec grub](#tutoriel--configuration-du-multiboot-avec-grub)
 
 6. **[Dépannage](#dépannage)**
-   - [Liens utiles et vidéos pour résoudre les problèmes communs](#liens-utiles-et-vidéos-pour-résoudre-les-problèmes-communs)
-
+   
 7. **[Communauté et Sources](#communauté-et-sources)**
-   - [ArchWiki](#archwiki)
-   - [Site GLF](#site-glf)
-   - [Discord GLF](#discord-glf)
-   - [Chaîne Youtube de Cardiacman](#chaîne-youtube-de-cardiacman)
 
 8. **[Remerciements](#remerciements)**
-   - [Remerciements à la communauté Arch Linux et aux développeurs des outils utilisés](#remerciements-à-la-communauté-arch-linux-et-aux-développeurs-des-outils-utilisés)
 
 ---
 
@@ -484,7 +478,7 @@ sudo systemctl enable --now cronie
 
 ---
 
-### Grub BTRFS <a name="timeshift"></a>
+### Grub BTRFS <a name="grub-btrfs"></a>
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Setup Grub BTRFS sur Arch Linux.](https://youtu.be/EyhSUBwjPUY?si=cQ0TuGI76_M1TzTp)
 
@@ -622,7 +616,7 @@ sudo pacman -S goverlay
 
 ---
 
-### Amélioration de la compatibilité des jeux Windows <a name="affichage-des-performances-en-jeu"></a>
+### Amélioration de la compatibilité des jeux Windows <a name="amélioration-compatibilité"></a>
 
 Nous augmentons la valeur par défaut de cette variable, permettant le stockage de plus de "zones de mappage mémoire". La valeur par défaut est très basse. L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam (Voir [ProtonDB](https://www.protondb.com/)), sachant que certains jeux mal optimisés ont tendance à atteindre rapidement cette limite, ce qui peut entraîner un crash.
 
