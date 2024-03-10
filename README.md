@@ -736,7 +736,11 @@ Le multiboot est un moyen de démarrer plusieurs systèmes d'exploitation sur un
    sudo os-prober
    ```
 
-4. **Générer la Configuration de GRUB** :
+4. **mémoriser le dernier kernel ou os utilisé**
+
+Remplacez la ligne `GRUB_DEFAULT=0` par `GRUB_DEFAULT=saved` et ajoutez `GRUB_SAVEDEFAULT="true"`
+
+5. **Générer la Configuration de GRUB** :
 
    Utilisez la commande suivante pour générer la configuration de GRUB basée sur les résultats de `os-prober` :
    ```bash
