@@ -80,13 +80,33 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
-#### 3. Archinstall <a name="utilisation-darchinstall"></a>
+Bien sûr, voici la partie mise à jour sur l'utilisation d'archinstall intégrée directement dans le tutoriel :
 
+---
+
+#### 3. Utilisation d'archinstall <a name="utilisation-darchinstall"></a>
+
+**Installation et utilisation :**  
+Pour lancer `archinstall`, commencez par mettre à jour `archinstall` pour vous assurer d'utiliser la version la plus récente. C'est important car, par exemple au moment où ces lignes sont écrites, la version de l'ISO d'Arch Linux 01/03/2024 tente d'installer le paquet "plasma-wayland" qui n'existe plus depuis la sortie de Plasma 6 et mène donc à une erreur qui plante archinstall. Ce problème est corrigé dans les versions plus récentes d'`archinstall`, donc mettre à jour avant de lancer l'installation est essentiel.
+
+Il y a deux méthodes principales pour mettre à jour `archinstall` :
+
+**Mise à jour avec pip :**
 ```sh
-archinstall                 # pour lancer le script d'aide à l'installation pour arch linux
+pip install --upgrade archinstall
 ```
 
-**/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
+**Mise à jour en clonant le dépôt git :**
+```sh
+git clone https://github.com/archlinux/archinstall.git
+cd archinstall
+python -m archinstall
+```
+
+Une fois `archinstall` mis à jour, vous pouvez le lancer avec la commande suivante :
+```sh
+archinstall
+```
 
 ---
 
