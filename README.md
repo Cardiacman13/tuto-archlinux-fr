@@ -80,8 +80,6 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
-Bien sûr, voici la partie mise à jour sur l'utilisation d'archinstall intégrée directement dans le tutoriel :
-
 ---
 
 #### 3. Utilisation d'archinstall <a name="utilisation-darchinstall"></a>
