@@ -55,10 +55,7 @@
 
 #### Installation <a name="installation"/>
 
-> [!IMPORTANT]
-> Suivez les étapes avec minutie
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
+Téléchargez et lancez la dernière iso de Arch Linux : https://archlinux.org/download/
 
 #### 1. Configurer le clavier en français <a name="configurer-le-clavier-en-français"></a>
 
@@ -106,10 +103,6 @@ D'autres erreurs de ce type peuvent arriver, il peut donc être parfois intéres
 ---
 
 ### Post-installation <a name="post-installation"></a>
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
-
----
 
 #### 1. Optimiser pacman <a name="optimiser-pacman"></a>
 
@@ -174,8 +167,6 @@ paru --gendb
 ---
 
 #### 3. Alias de maintenance : <a name="alias-de-maintenance"></a>
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
 Cette modification vous permet de simplement taper « update-arch » dans un terminal pour mettre à jour le système, « clean-arch » pour le nettoyer, ou « fix-key » en cas d'erreur avec les clés gpg.
 
@@ -596,10 +587,6 @@ sudo pacman -S lutris wine-staging
 
 Vidéo supplémentaire :
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Configuration de Lutris pour ordinateur portable Intel/Nvidia](https://www.youtube.com/watch?v=Am3pgTXiUAA)
-
----
-
 ### Support avancé de manettes <a name="support-avancé-de-manettes"></a>
 
 Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
@@ -631,8 +618,6 @@ sudo pacman -S goverlay
 ### Amélioration de la compatibilité des jeux Windows <a name="amélioration-compatibilité"></a>
 
 Nous augmentons la valeur par défaut de cette variable, permettant le stockage de plus de "zones de mappage mémoire". La valeur par défaut est très basse. L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam (Voir [ProtonDB](https://www.protondb.com/)), sachant que certains jeux mal optimisés ont tendance à atteindre rapidement cette limite, ce qui peut entraîner un crash.
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
 - Ajouter dans :
 
@@ -768,13 +753,7 @@ Une fois ces étapes terminées, redémarrez votre système pour appliquer les m
 
 - **[GLF-Astuces](https://github.com/Gaming-Linux-FR/glf-astuces/tree/main)** : Astuces diverses, ne concernant pas une distribution spécifique.
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus communs.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 4 Maintenance / mise à jour](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
- 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
-
-- Pour de l'aide, visitez le Discord GLF (fr/en) : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+- Pour de l'aide, visitez le Discord GLF : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
 ---
 
