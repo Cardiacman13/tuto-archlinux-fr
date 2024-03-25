@@ -44,6 +44,7 @@
    - [NVIDIA-ALL](#nvidia-all)
    - [Installation Flatpak](#installation-flatpak)
    - [Tutoriel : Configuration du Multiboot avec grub](#tutoriel--configuration-du-multiboot-avec-grub)
+   - [Zram](zram)
 
 6. **[Dépannage](#dépannage)**
    
@@ -754,6 +755,38 @@ Une fois ces étapes terminées, redémarrez votre système pour appliquer les m
 - **[GLF-Astuces](https://github.com/Gaming-Linux-FR/glf-astuces/tree/main)** : Astuces diverses, ne concernant pas une distribution spécifique.
 
 - Pour de l'aide, visitez le Discord GLF : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+
+---
+
+### Zram
+
+Permet de compresser une partie de la ram.
+
+```sh
+sudo pacman -S zram-generator
+```
+
+```sh
+sudo pacman -S zram-generator
+exec_log "echo -e '[zram0]\nzram-size = ram / 4\ncompression-algorithm = zstd\nswap-priority = 10\nfs-type = swap' | sudo tee -a /etc/systemd/zram-generator.conf" "$(eval_gettext "Activation de Zram")"
+```
+
+Ce qui qui donne dans le fichier zram-generator.conf :
+
+```
+[zram0]
+zram-size = ram / 4
+compression-algorithm = zstd
+swap-priority = 10
+fs-type = swap
+```
+
+Cette configuration indique que :
+
+- Un dispositif Zram (`zram0`) est créé.
+- La taille de la zone de swap Zram est définie à un quart de la RAM totale (`ram / 4`). Garder la partition Zram petite est intentionnel, car la compression introduit un surcoût. Pour les systèmes orientés jeux, il est crucial de minimiser ce surcoût pour maintenir une haute performance. En limitant la quantité de RAM utilisée pour Zram, plus de RAM physique est disponible pour les applications de jeux, ce qui peut être particulièrement bénéfique pour les systèmes à mémoire limitée.
+- L'`algorithme de compression` est défini sur `zstd` (Zstandard), connu pour son équilibre entre le taux de compression et la vitesse. Zstandard offre une compression efficace, aidant à économiser de l'espace RAM sans impacter significativement la performance.
+- La `priorité de swap` est définie à `10`, indiquant la priorité de cette zone de swap par rapport aux autres. Une priorité plus élevée aide à garantir que cet espace de swap est utilisé de manière préférentielle.
 
 ---
 
