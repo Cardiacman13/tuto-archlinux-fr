@@ -2,7 +2,7 @@
 
 ---
 
-## **Table des Matières avec Ancres Markdown**
+## **Table des Matières**
 
 1. **[Installation](#installation)**
    - [Configurer le clavier en français](#configurer-le-clavier-en-français)
