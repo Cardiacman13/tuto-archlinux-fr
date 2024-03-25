@@ -768,7 +768,7 @@ sudo pacman -S zram-generator
 
 ```sh
 sudo pacman -S zram-generator
-exec_log "echo -e '[zram0]\nzram-size = ram / 4\ncompression-algorithm = zstd\nswap-priority = 10\nfs-type = swap' | sudo tee -a /etc/systemd/zram-generator.conf" "$(eval_gettext "Activation de Zram")"
+echo -e '[zram0]\nzram-size = ram / 4\ncompression-algorithm = zstd\nswap-priority = 10\nfs-type = swap' | sudo tee -a /etc/systemd/zram-generator.conf
 ```
 
 Ce qui donne dans le fichier zram-generator.conf :
