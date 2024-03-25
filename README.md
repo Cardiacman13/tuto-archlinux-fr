@@ -44,7 +44,7 @@
    - [NVIDIA-ALL](#nvidia-all)
    - [Installation Flatpak](#installation-flatpak)
    - [Tutoriel : Configuration du Multiboot avec grub](#tutoriel--configuration-du-multiboot-avec-grub)
-   - [Zram](zram)
+   - [Zram](#zram)
 
 6. **[Dépannage](#dépannage)**
    
