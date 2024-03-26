@@ -764,10 +764,6 @@ Permet de compresser une partie de la ram.
 
 ```sh
 sudo pacman -S zram-generator
-```
-
-```sh
-sudo pacman -S zram-generator
 echo -e '[zram0]\nzram-size = ram / 4\ncompression-algorithm = zstd\nswap-priority = 10\nfs-type = swap' | sudo tee -a /etc/systemd/zram-generator.conf
 ```
 
