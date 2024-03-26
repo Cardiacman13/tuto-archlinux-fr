@@ -773,7 +773,7 @@ Ce qui donne dans le fichier zram-generator.conf :
 [zram0]
 zram-size = ram / 4
 compression-algorithm = zstd
-swap-priority = 10
+swap-priority = 100
 fs-type = swap
 ```
 
@@ -782,7 +782,7 @@ Cette configuration indique que :
 - Un dispositif Zram (`zram0`) est créé.
 - La taille de la zone de swap Zram est définie à un quart de la RAM totale (`ram / 4`). Garder la partition Zram petite est intentionnel, car la compression introduit un surcoût. Pour les systèmes orientés jeux, il est crucial de minimiser ce surcoût pour maintenir une haute performance. En limitant la quantité de RAM utilisée pour Zram, plus de RAM physique est disponible pour les applications de jeux, ce qui peut être particulièrement bénéfique pour les systèmes à mémoire limitée.
 - L'`algorithme de compression` est défini sur `zstd` (Zstandard), connu pour son équilibre entre le taux de compression et la vitesse. Zstandard offre une compression efficace, aidant à économiser de l'espace RAM sans impacter significativement la performance.
-- La `priorité de swap` est définie à `10`, indiquant la priorité de cette zone de swap par rapport aux autres. Une priorité plus élevée aide à garantir que cet espace de swap est utilisé de manière préférentielle.
+- La `priorité de swap` est définie à `100`, indiquant la priorité de cette zone de swap par rapport aux autres. Une priorité plus élevée aide à garantir que cet espace de swap est utilisé de manière préférentielle.
 
 ---
 
