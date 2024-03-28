@@ -88,8 +88,9 @@ Vous pouvez simplement taper : ```archinstall``` pour le lancer.
 Au moment où ces lignes sont écrites, la version de l'ISO d'Arch Linux 01/03/2024 tente d'installer le paquet "plasma-wayland" qui n'existe plus depuis la sortie de Plasma 6 et mène donc à une erreur qui plante archinstall. Ce problème est corrigé dans les versions plus récentes d'`archinstall`, donc mettre à jour avant de lancer l'installation est essentiel.
 
 **Mise à jour de archinstall :**
+
 ```sh
-pacman -S archinstall
+pacman -Sy archinstall
 ```
 
 D'autres erreurs de ce type peuvent arriver, il peut donc être parfois intéressant de prendre la dernière version de archinstall.
