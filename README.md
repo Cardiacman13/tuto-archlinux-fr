@@ -1,7 +1,5 @@
 # 🐧 ARCHITECT TUTO 📜
 
----
-
 ## **Table des Matières**
 
 1. **[Installation](#installation)**
@@ -309,7 +307,7 @@ Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de confi
 sudo mkinitcpio -P
 ```
 
-**6. Dynamic Boost :** 
+#### 6. Dynamic Boost :
 
 Si votre PC portable est compatible Dynamic Bosst activez :
 
@@ -317,7 +315,15 @@ Si votre PC portable est compatible Dynamic Bosst activez :
 sudo systemctl enable --now nvidia-powerd
 ```
 
-Vérifiez bien qu'il l'est compatible.
+Vérifiez bien qu'il est compatible.
+
+#### 7. Services Nvidia systemd
+
+Après l'installation des drivers activez les services Nvidia pour la veille et la gestion de l'énergie. 
+
+```sh
+sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service
+```
 
 --- 
 
@@ -600,8 +606,6 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 
 ## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/game-console.png" width="30" height="30"> **Améliorez votre Expérience de Jeu** <a name="améliorez-votre-expérience-de-jeu"></a>
 
---- 
-
 <br>
 
 ### Steam <a name="steam"></a>
@@ -679,8 +683,6 @@ vm.max_map_count=2147483642
 <br>
 
 ## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimisation"></a>
-
---- 
 
 <br>
 
