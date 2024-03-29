@@ -52,7 +52,9 @@
 
 8. **[Remerciements](#remerciements)**
 
----
+--- 
+
+<br>
 
 #### Installation <a name="installation"/>
 
@@ -78,7 +80,9 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
----
+--- 
+
+<br>
 
 #### 3. Utilisation d'archinstall <a name="utilisation-darchinstall"></a>
 
@@ -95,7 +99,9 @@ pacman -Sy archinstall
 
 D'autres erreurs de ce type peuvent arriver, il peut donc être parfois intéressant de prendre la dernière version de archinstall.
 
----
+--- 
+
+<br>
 
 ### Post-installation <a name="post-installation"></a>
 
@@ -159,7 +165,9 @@ Ajout du support pour les mises à jour des paquets git. (Normalement, cela ne d
 paru --gendb
 ```
 
----
+--- 
+
+<br>
 
 #### 3. Alias de maintenance : <a name="alias-de-maintenance"></a>
 
@@ -203,7 +211,9 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
    
 Redémarrez le terminal.
 
----
+--- 
+
+<br>
 
 #### 4. Compilation multithread des paquets AUR : <a name="compilation-multithread-des-paquets-aur"></a>
 
@@ -225,11 +235,15 @@ MAKEFLAGS="-j6"
 
 Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est conseillé d'avoir 2 Go de RAM par cœur utilisé.
 
----
+--- 
+
+<br>
 
 ### SUPPORT MATÉRIEL <a name="support-matériel"></a>
 
----
+--- 
+
+<br>
 
 #### NVIDIA <a name="nvidia"></a>
 
@@ -305,7 +319,9 @@ sudo systemctl enable --now nvidia-powerd
 
 Vérifiez bien qu'il l'est compatible.
 
----
+--- 
+
+<br>
 
 #### AMD <a name="amd"></a>
 
@@ -325,7 +341,9 @@ Installer les composants de base :
 sudo pacman -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
----
+--- 
+
+<br>
 
 #### Imprimantes <a name="imprimantes"></a>
 - Essentiels
@@ -357,7 +375,9 @@ yay -S --needed python-pyqt5 hplip
 yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
 ```
 
----
+--- 
+
+<br>
 
 #### Bluetooth <a name="bluetooth"></a>
 
@@ -368,7 +388,9 @@ yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 
----
+--- 
+
+<br>
 
 #### [PipeWire](https://pipewire.org/)  <a name="pipewire"></a>
 
@@ -378,11 +400,15 @@ sudo systemctl enable --now  bluetooth.service
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
----
+---- 
+
+<br>
 
 ### LOGICIEL DE BASE <a name="logiciel-de-base"></a>
 
----
+--- 
+
+<br>
 
 #### Composants de base
 
@@ -392,7 +418,9 @@ Ici, vous trouverez des codecs, utilitaires, polices, pilotes :
 yay -S --needed gstreamer-vaapi gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade  libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-meslo-nerd ttf-droid duf btop  ntfs-3g fuse2fs exfatprogs fuse2 fuse3 bash-completion man-db man-pages
 ```
 
----
+--- 
+
+<br>
 
 #### Logiciels divers
 
@@ -410,7 +438,9 @@ Voici divers logiciels pour graphisme, vidéo (édition, support de codec), util
 sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
----
+--- 
+
+<br>
 
 #### Pare-feu <a name="pare-feu"></a>
 La configuration par défaut peut bloquer l'accès aux imprimantes et autres appareils sur votre réseau local.
@@ -422,7 +452,9 @@ sudo systemctl enable --now firewalld.service
 firewall-applet &
 ```
 
----
+--- 
+
+<br>
 
 #### Reflector pour la mise à jour automatique des miroirs <a name="reflector-pour-la-mise-à-jour-automatique-des-miroirs"></a>
 
@@ -436,7 +468,9 @@ Une commande pour générer une liste de miroirs, à faire une fois après la pr
 sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
----
+--- 
+
+<br>
 
 #### Arch Update <a name="arch-update"></a>
 
@@ -452,7 +486,9 @@ yay -S arch-update
 systemctl --user enable --now arch-update.timer
 ```
 
----
+--- 
+
+<br>
 
 #### Timeshift <a name="timeshift"></a>
 
@@ -474,7 +510,9 @@ sudo pacman -S timeshift
 sudo systemctl enable --now cronie
 ```
 
----
+--- 
+
+<br>
 
 ### Grub BTRFS <a name="grub-btrfs"></a>
 
@@ -508,7 +546,9 @@ crtl + x pour sauvegarder.
 
 Enfin on lance une fois Timeshift, je conseille de laisser tout par défaut.
 
----
+--- 
+
+<br>
 
 #### Fish <a name="fish"></a>
 
@@ -560,7 +600,9 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 
 ## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/game-console.png" width="30" height="30"> **Améliorez votre Expérience de Jeu** <a name="améliorez-votre-expérience-de-jeu"></a>
 
----
+--- 
+
+<br>
 
 ### Steam <a name="steam"></a>
 Notez que les pilotes AMD ou Nvidia doivent être installés au préalable comme mentionné dans la section [SUPPORT MATÉRIEL](#HARDWARE-SUPPORT).
@@ -569,7 +611,9 @@ Notez que les pilotes AMD ou Nvidia doivent être installés au préalable comme
 sudo pacman -S steam
 ```
 
----
+--- 
+
+<br>
 
 ### Lutris <a name="lutris"></a>
 
@@ -596,7 +640,9 @@ Pilote Linux avancé pour manettes PS5
 yay -S dualsensectl-git
 ```
 
----
+--- 
+
+<br>
 
 ### Affichage des performances en jeu <a name="affichage-des-performances-en-jeu"></a>
 
@@ -608,7 +654,9 @@ Ici, nous installons GOverlay qui est une interface graphique pour configurer Ma
 sudo pacman -S goverlay
 ```
 
----
+--- 
+
+<br>
 
 ### Amélioration de la compatibilité des jeux Windows <a name="amélioration-compatibilité"></a>
 
@@ -626,11 +674,15 @@ la ligne suivante:
 vm.max_map_count=2147483642
 `
 
----
+--- 
+
+<br>
 
 ## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimisation"></a>
 
----
+--- 
+
+<br>
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) <a name="kernel-tkg"></a>
 
@@ -647,7 +699,9 @@ cd linux-tkg
 makepkg -si
 ```
 
----
+--- 
+
+<br>
 
 ### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) <a name="mesa-tkg"></a>
 
@@ -665,7 +719,9 @@ makepkg -si
 
 Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
----
+--- 
+
+<br>
 
 ### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) <a name="nvidia-all"></a>
 
@@ -684,7 +740,9 @@ makepkg -si
 
 Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
----
+--- 
+
+<br>
 
 ### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak) <a name="installation-flatpak"></a>
 
@@ -741,8 +799,9 @@ Le multiboot est un moyen de démarrer plusieurs systèmes d'exploitation sur un
 
 Une fois ces étapes terminées, redémarrez votre système pour appliquer les modifications. Vous devriez maintenant voir une option pour chaque système d'exploitation détecté lors du démarrage de votre ordinateur.
 
+--- 
 
----
+<br>
 
 ## Dépannage <a name="dépannage"></a>
 
@@ -750,7 +809,9 @@ Une fois ces étapes terminées, redémarrez votre système pour appliquer les m
 
 - Pour de l'aide, visitez le Discord GLF : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
----
+--- 
+
+<br>
 
 ### Zram
 
@@ -778,7 +839,9 @@ Cette configuration indique que :
 - L'`algorithme de compression` est défini sur `zstd` (Zstandard), connu pour son équilibre entre le taux de compression et la vitesse. Zstandard offre une compression efficace, aidant à économiser de l'espace RAM sans impacter significativement la performance.
 - La `priorité de swap` est définie à `100`, indiquant la priorité de cette zone de swap par rapport aux autres. Une priorité plus élevée aide à garantir que cet espace de swap est utilisé de manière préférentielle.
 
----
+--- 
+
+<br>
 
 ## Sources <a name="communauté-et-sources"></a>
 
@@ -789,7 +852,9 @@ Sources et liens utiles :
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaîne Youtube](https://www.youtube.com/@Cardiacman)
 
----
+--- 
+
+<br>
 
 ## 🙏 Remerciements <a name="remerciements"></a>
 
