@@ -858,12 +858,6 @@ Sources et liens utiles :
 
 <br>
 
-## 🙏 Remerciements <a name="remerciements"></a>
+## Remerciements <a name="remerciements"></a>
 
-- L'équipe d'[Arch Linux](https://archlinux.org/) pour leur travail remarquable.
-- La communauté Arch Linux pour leur documentation exceptionnelle.
-- Les mainteneurs de l'AUR pour leur travail acharné.
-- Les développeurs des paquets utilisés dans ce projet. Mention spéciale à :
-- [Frogging Family](https://github.com/Frogging-Family)
-- [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
-- Merci au [Discord GLF](https://discord.gg/6t4REDETJd) pour les nombreux tests et retours.
+Un grand merci à l'équipe d'Arch Linux, à la communauté Arch Linux, aux mainteneurs AUR, aux contributeurs et développeurs des paquets utilisés dans ce projet. Merci à toute la communauté du Discord GLF pour leurs tests et retours.
