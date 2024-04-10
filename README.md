@@ -806,16 +806,6 @@ Une fois ces étapes terminées, redémarrez votre système pour appliquer les m
 
 <br>
 
-## Dépannage <a name="dépannage"></a>
-
-- **[GLF-Astuces](https://github.com/Gaming-Linux-FR/glf-astuces/tree/main)** : Astuces diverses, ne concernant pas une distribution spécifique.
-
-- Pour de l'aide, visitez le Discord GLF : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
-
---- 
-
-<br>
-
 ### Zram
 
 Permet de compresser une partie de la ram.
@@ -845,6 +835,17 @@ Cette configuration indique que :
 --- 
 
 <br>
+
+## Dépannage <a name="dépannage"></a>
+
+- **[GLF-Astuces](https://github.com/Gaming-Linux-FR/glf-astuces/tree/main)** : Astuces diverses, ne concernant pas une distribution spécifique.
+
+- Pour de l'aide, visitez le Discord GLF : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+
+--- 
+
+<br>
+
 
 ## Sources <a name="communauté-et-sources"></a>
 
