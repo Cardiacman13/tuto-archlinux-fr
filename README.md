@@ -270,12 +270,13 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Ajouter:
 
-`options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02`
-`options nvidia-drm modeset=1 fbdev=1`
+`options nvidia-drm modeset=1`
 
 Sauvegarder.
    
 #### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
+
+Cette étape est non obligatoire et ne devrait être éffectuée que si on note des problèmes au démarrage.
    
 ```sh
 sudo nano /etc/mkinitcpio.conf
@@ -287,7 +288,7 @@ Modifiez la ligne MODULES=() pour :
 MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
-Si utilisation de btrfs :
+Exemple si utilisation de btrfs :
 
 ```sh
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
