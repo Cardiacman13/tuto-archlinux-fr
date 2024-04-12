@@ -1,4 +1,4 @@
-# 🐧 ARCHITECT TUTO 📜
+# ARCHITECT TUTO
 
 ## **Table des Matières**
 
@@ -605,7 +605,7 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 
 - ***Redémarrez sauf si fait à l'étape 3***, les alias de tout type ne fonctionnent qu'après le redémarrage du terminal.
 
-## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/game-console.png" width="30" height="30"> **Améliorez votre Expérience de Jeu** <a name="améliorez-votre-expérience-de-jeu"></a>
+## **Améliorez votre Expérience de Jeu** <a name="améliorez-votre-expérience-de-jeu"></a>
 
 <br>
 
@@ -683,7 +683,7 @@ vm.max_map_count=2147483642
 
 <br>
 
-## <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimisation"></a>
+## **BONUS** : <a name="optimisation"></a>
 
 <br>
 
