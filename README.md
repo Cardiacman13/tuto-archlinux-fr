@@ -34,7 +34,6 @@
    - [Lutris](#lutris)
    - [Support avancé de manettes](#support-avancé-de-manettes)
    - [Affichage des performances en jeu](#affichage-des-performances-en-jeu)
-   - [Amélioration de la compatibilité des jeux Windows](#amélioration-compatibilité)
 
 5. **[Optimisation](#optimisation)**
    - [Kernel TKG](#kernel-tkg)
@@ -254,7 +253,7 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader opencl-nvidia lib32-opencl-nvidia
 ```
 
-Si vous avez un  <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [PC portable Intel / Nvidia](https://youtu.be/GhsP6btpiiw?si=ibWw_dQdty8_Q0jm) :
+Si vous avez un [PC portable Intel / Nvidia](https://youtu.be/GhsP6btpiiw?si=ibWw_dQdty8_Q0jm) :
 
 ```sh
 sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
@@ -323,7 +322,7 @@ Vérifiez bien qu'il est compatible.
 Après l'installation des drivers activez les services Nvidia pour la veille et la gestion de l'énergie. 
 
 ```sh
-sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service
+sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service
 ```
 
 --- 
@@ -481,7 +480,7 @@ sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save 
 
 #### Arch Update <a name="arch-update"></a>
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch-Update  : Notifie les updates de Arch et aide aux tâches importantes avant et après l'update.](https://youtu.be/QkOkX70SEmo?si=EwB-rSTV5dMNbv5D)
+[Arch-Update  : Notifie les updates de Arch et aide aux tâches importantes avant et après l'update.](https://youtu.be/QkOkX70SEmo?si=EwB-rSTV5dMNbv5D)
 
 - [arch-update](https://github.com/Antiz96/arch-update)
 
@@ -491,6 +490,7 @@ Support optionnel pour les mises à jour des paquets AUR/Flatpak et les notifica
 ```sh
 yay -S arch-update
 systemctl --user enable --now arch-update.timer
+systemctl --user enable --now arch-update-tray.service
 ```
 
 --- 
@@ -523,7 +523,7 @@ sudo systemctl enable --now cronie
 
 ### Grub BTRFS <a name="grub-btrfs"></a>
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Setup Grub BTRFS sur Arch Linux.](https://youtu.be/EyhSUBwjPUY?si=cQ0TuGI76_M1TzTp)
+[Setup Grub BTRFS sur Arch Linux.](https://youtu.be/EyhSUBwjPUY?si=cQ0TuGI76_M1TzTp)
 
 Permet de prendre des snapshots à chaque update et de booter dessus à partir de grub.
 
@@ -615,6 +615,7 @@ Notez que les pilotes AMD ou Nvidia doivent être installés au préalable comme
 ```sh
 sudo pacman -S steam
 ```
+**[Steam](/Gaming-Linux-FR/steam-post-install)** : Guide de post-installation pour Steam
 
 --- 
 
@@ -663,26 +664,6 @@ sudo pacman -S goverlay
 
 <br>
 
-### Amélioration de la compatibilité des jeux Windows <a name="amélioration-compatibilité"></a>
-
-Nous augmentons la valeur par défaut de cette variable, permettant le stockage de plus de "zones de mappage mémoire". La valeur par défaut est très basse. L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam (Voir [ProtonDB](https://www.protondb.com/)), sachant que certains jeux mal optimisés ont tendance à atteindre rapidement cette limite, ce qui peut entraîner un crash.
-
-- Ajouter dans :
-
-```sh
-sudo nano /etc/sysctl.d/99-sysctl.conf
-``` 
-
-la ligne suivante:
-
-`
-vm.max_map_count=2147483642
-`
-
---- 
-
-<br>
-
 ## **BONUS** : <a name="optimisation"></a>
 
 <br>
@@ -694,7 +675,7 @@ vm.max_map_count=2147483642
 [KERNEL TKG](https://github.com/Frogging-Family) est un noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
 
 Vidéo associée :
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Améliorer ses perfs](https://youtu.be/43yYIWMnDJA)
+[Kernel TKG sur Arch + Améliorer ses perfs](https://youtu.be/43yYIWMnDJA)
 
 ```sh
 git clone https://github.com/Frogging-Family/linux-tkg.git
@@ -733,7 +714,7 @@ Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
 Nvidia-all est une intégration du pilote nvidia par TkG. Il comprend des patchs de support pour les nouveaux noyaux. Il vous permet de sélectionner la version du pilote que vous souhaitez installer, qu'il s'agisse de la dernière version officielle, d'une version bêta, de la version Vulkan, etc.
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia, regardez ça !](https://youtu.be/T0laE8gPtfY)
+[Vous utilisez Arch et Nvidia, regardez ça !](https://youtu.be/T0laE8gPtfY)
 
 ```sh
 git clone https://github.com/Frogging-Family/nvidia-all.git
@@ -751,7 +732,7 @@ Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
 Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est promu comme offrant un environnement "sandbox" dans lequel les utilisateurs peuvent exécuter des logiciels isolément du reste du système.
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
+[MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
 
 ```sh
 sudo pacman -S flatpak flatpak-kcm
@@ -812,7 +793,7 @@ Permet de compresser une partie de la ram.
 
 ```sh
 sudo pacman -S zram-generator
-echo -e '[zram0]\nzram-size = ram / 4\ncompression-algorithm = zstd\nswap-priority = 10\nfs-type = swap' | sudo tee -a /etc/systemd/zram-generator.conf
+echo -e '[zram0]\nzram-size = ram / 4\ncompression-algorithm = zstd\nswap-priority = 100\nfs-type = swap' | sudo tee -a /etc/systemd/zram-generator.conf
 ```
 
 Ce qui donne dans le fichier zram-generator.conf :
@@ -838,7 +819,7 @@ Cette configuration indique que :
 
 ## Dépannage <a name="dépannage"></a>
 
-- **[GLF-Astuces](https://github.com/Gaming-Linux-FR/glf-astuces/tree/main)** : Astuces diverses, ne concernant pas une distribution spécifique.
+- **[GLF-Astuces](/Gaming-Linux-FR/glf-astuces/)** : Astuces diverses, ne concernant pas une distribution spécifique.
 
 - Pour de l'aide, visitez le Discord GLF : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
@@ -851,7 +832,7 @@ Cette configuration indique que :
 
 Sources et liens utiles :
 - [ArchWiki](https://wiki.archlinux.org/)
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
+- [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaîne Youtube](https://www.youtube.com/@Cardiacman)
