@@ -245,36 +245,51 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 
 <br>
 
-#### NVIDIA <a name="nvidia"></a>
+#### Installation des pilotes NVIDIA <a name="nvidia"></a>
 
 > [!IMPORTANT]
->  Vous avez besoin des headers de votre kernel pour que nvidia-dkms fonctionne, exemple si vous avec choisi le kernel zen il faut installet `linux-zen-headers`
+> Vous avez besoin des headers de votre kernel pour que `nvidia-dkms` fonctionne. Par exemple, si vous avez choisi le kernel zen, il faut installer `linux-zen-headers`.
 
-#### 1. Installer les composants de base :
+#### 1. Installation des composants de base
+
+Pour installer les pilotes et utilitaires Nvidia de base, utilisez la commande suivante :
 
 ```sh
 sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader opencl-nvidia lib32-opencl-nvidia
 ```
 
-Si vous avez un [PC portable Intel / Nvidia](https://youtu.be/GhsP6btpiiw?si=ibWw_dQdty8_Q0jm) :
+##### Installation supplémentaire pour PC portable Intel/Nvidia
+
+Si vous avez un [PC portable avec Intel/Nvidia](https://youtu.be/GhsP6btpiiw?si=ibWw_dQdty8_Q0jm), utilisez également les commandes suivantes :
 
 ```sh
 sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
-#### 2. Activer nvidia_drm modeset=1 :
+#### 2. Activer `nvidia_drm modeset=1` et autres options avancées
 
-Ce paramètre permet de lancer le module Nvidia au démarrage.
+Pour permettre le lancement du module Nvidia au démarrage et optimiser les performances, procédez comme suit :
 
-```sh
-sudo nano /etc/modprobe.d/nvidia.conf
-```
+1. Ouvrez le fichier de configuration de modprobe pour le module Nvidia :
 
-Ajouter:
+   ```sh
+   sudo nano /etc/modprobe.d/nvidia.conf
+   ```
 
-`options nvidia_drm modeset=1`
+2. Ajoutez les lignes suivantes pour activer les différentes options :
 
-Sauvegarder.
+   ```plaintext
+   options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02
+   options nvidia_drm modeset=1 fbdev=1
+   ```
+
+   - **NVreg_UsePageAttributeTable=1 (par défaut 0)** : Active une meilleure méthode de gestion de la mémoire (PAT). Cette méthode crée une table de partition à une adresse spécifique et utilise l'architecture mémoire et l'ensemble d'instructions de manière plus efficace. Si votre système prend en charge cette fonctionnalité, elle devrait améliorer les performances du CPU.
+   - **NVreg_InitializeSystemMemoryAllocations=0 (par défaut 1)** : Désactive le nettoyage de l'allocation mémoire système avant de l'utiliser pour le GPU, ce qui peut potentiellement améliorer les performances au détriment de la sécurité. Pour revenir à la valeur par défaut, écrivez `options nvidia NVreg_InitializeSystemMemoryAllocations=1` dans `/etc/modprobe.d/nvidia.conf`.
+   - **NVreg_DynamicPowerManagement=0x02** : Active la gestion dynamique de l'alimentation pour les cartes mobiles de génération Turing, permettant de mettre hors tension le GPU lors des périodes d'inactivité.
+   - **nvidia_drm.modeset=1 (par défaut 0)** : Active la prise en charge de modesetting pour le driver NVIDIA, ce qui est crucial pour le support de Wayland et le bon fonctionnement de PRIME Offload.
+   - **nvidia_drm.fbdev=1** : Active la prise en charge du framebuffer matériel, permettant d'utiliser la résolution d'affichage native en tty. Cette option est expérimentale et n'a pas d'effet sur les ordinateurs portables PRIME, car le framebuffer est géré par l'iGPU.
+
+3. Sauvegardez le fichier et quittez l'éditeur.
    
 #### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
 
