@@ -248,7 +248,7 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 #### NVIDIA <a name="nvidia"></a>
 
 > [!IMPORTANT]
->  Quel que soit le DE restez sur X11 au moins jusqu'au merge de ce patch : [explicit-sync](https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/967)
+>  Vous avez besoin des headers de votre kernel pour que nvidia-dkms fonctionne, exemple si vous avec choisi le kernel zen il faut installet `linux-zen-headers`
 
 #### 1. Installer les composants de base :
 
