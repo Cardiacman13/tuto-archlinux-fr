@@ -352,7 +352,13 @@ sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-res
 Installer les composants de base :
 
 ```sh
-sudo pacman -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+sudo pacman -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers
+```
+
+AMD ROCM : 
+
+```sh
+sudo pacman -S rocm-opencl-runtime rocm-hip-runtime
 ```
 
 ---
@@ -370,34 +376,40 @@ sudo pacman -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-i
 <br>
 
 #### Imprimantes <a name="imprimantes"></a>
-- Essentiels
 
-```sh
-sudo pacman -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
-sudo systemctl enable --now avahi-daemon cups
-```
+1. **Essentiels** :
+   - Installez les paquets nécessaires pour la gestion des imprimantes :
+     ```sh
+     sudo pacman -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
+     ```
+   - Activez et démarrez les services Avahi et CUPS :
+     ```sh
+     sudo systemctl enable --now avahi-daemon cups
+     ```
+   - Désactivez le service systemd-resolved (si vous ne l'utilisez pas) :
+     ```sh
+     sudo systemctl disable systemd-resolved
+     ```
 
-```sh
-sudo systemctl disable systemd-resolved
-```
+2. **Pilotes** :
+   - Installez les paquets pour les pilotes d'imprimantes génériques (Ces pilotes gèrent la plus part des imprimantes) :
+     ```sh
+     sudo pacman -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
+     ```
 
-- Pilotes
+3. **Imprimantes HP** :
+   - Pour les imprimantes HP, installez également les paquets suivants :
+     ```sh
+     yay -S --needed python-pyqt5 hplip
+     ```
 
-```sh
-sudo pacman -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds 
-```
+4. **Imprimantes Epson** :
+   - Pour les imprimantes Epson, utilisez les commandes suivantes :
+     ```sh
+     yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
+     ```
 
-- Imprimantes HP
-
-```sh
-yay -S --needed python-pyqt5 hplip
-```
-
-- Imprimantes Epson
-
-```sh
-yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
-```
+Tous les cas ne sont pas gérés par les points précédents, des fois les drivers sont sur AUR il faut fouiller comme par exemple pour la [brother-mfc-9340cdw](https://aur.archlinux.org/packages/brother-mfc-9340cdw).
 
 --- 
 
