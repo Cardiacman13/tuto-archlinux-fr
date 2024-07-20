@@ -262,7 +262,7 @@ Si vous avez un [PC portable Intel / Nvidia](https://youtu.be/GhsP6btpiiw?si=ibW
 sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
-#### 2. Activer nvidia-drm modeset=1 :
+#### 2. Activer nvidia_drm modeset=1 :
 
 Ce paramètre permet de lancer le module Nvidia au démarrage.
 
@@ -272,7 +272,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Ajouter:
 
-`options nvidia-drm modeset=1`
+`options nvidia_drm modeset=1`
 
 Sauvegarder.
    
