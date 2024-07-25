@@ -2,6 +2,11 @@
 
 > [!WARNING]
 > ArchLinux est une distribution DIY (Do It Yourself). Il est crucial d'avoir de solides compétences techniques ou d'être prêt à consulter abondamment la documentation. Il est impensable de rester sur Arch Linux si l'on dépend constamment de l'aide des autres. En cas de problème, il faut absolument être capable de trouver et de réparer soi-même rapidement. Sinon, on risque de devenir dépendant des autres ou de passer des heures à réparer ou réinstaller en boucle.
+> 
+> Extrait de [du WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais)) : "Tandis que de nombreuses distributions GNU/Linux tentent d'être plus conviviales, Arch Linux a toujours été, et restera toujours centrée sur l'utilisateur. Elle est destinée à répondre aux besoins de ceux qui y contribuent, plutôt que d'essayer d'attirer le plus grand nombre. Elle est destinée à l'utilisateur compétent de GNU/Linux ou à toute personne ayant une attitude de bricoleur et disposée à lire la documentation et à résoudre ses propres problèmes."
+>
+> Être sur Arch Linux sans lire la documentation et en étant dépendant des autres va à l'encontre de ce qu'est cette distribution.
+
 
 ## **Table des Matières**
 
