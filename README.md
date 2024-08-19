@@ -187,11 +187,11 @@ Ajoutez chacune de ces lignes à la fin du fichier :
 pour yay :
 
 ```sh
-alias update-arch='yay && flatpak update'
+alias update-arch='yay'
 ```
 
 ```sh
-alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+alias clean-arch='yay -Sc && yay -Yc'
 ```
 
 pour Paru :
@@ -201,7 +201,7 @@ alias update-arch='paru && flatpak update'
 ```
 
 ```sh
-alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
+alias clean-arch='paru -Sc && paru -c'
 ```
 
 Pour tous : 
@@ -340,15 +340,38 @@ sudo systemctl enable --now nvidia-powerd
 
 Vérifiez bien qu'il est compatible.
 
-#### 7. Services Nvidia systemd
+#### 7. Gestion des problèmes après la reprise de la suspension avec une carte Nvidia
 
-Après l'installation des drivers activez les services Nvidia pour la veille et la gestion de l'énergie. 
+Si vous rencontrez des problèmes de distorsion graphique ou de difficulté à focaliser sur la bonne fenêtre après une reprise de la suspension sur un système utilisant une carte Nvidia avec Wayland, il peut être utile de configurer votre système pour préserver la mémoire vidéo après la suspension.
 
-```sh
-sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service
-```
+#### Préservation de la mémoire vidéo après la suspension
 
---- 
+Suivez ces étapes pour configurer votre système afin de préserver la mémoire vidéo après la suspension :
+
+1. **Activer les services système nécessaires** :
+   
+   Exécutez les commandes suivantes pour activer les services nécessaires à la gestion de la suspension avec Nvidia :
+
+   ```bash
+   sudo systemctl enable nvidia-suspend.service
+   sudo systemctl enable nvidia-hibernate.service
+   sudo systemctl enable nvidia-resume.service
+   ```
+
+2. **Ajouter les paramètres du module du noyau** :
+   
+   Créez ou modifiez le fichier `/etc/modprobe.d/nvidia-sleep.conf` avec le contenu suivant :
+
+   ```plaintext
+   options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
+   ```
+
+   - **NVreg_PreserveVideoMemoryAllocations=1** : Cette option permet de préserver les allocations de mémoire vidéo pendant la suspension, réduisant ainsi les problèmes graphiques lors de la reprise.
+   - **NVreg_TemporaryFilePath=/var/tmp** : Définit le chemin du fichier temporaire utilisé par le pilote Nvidia pour gérer les allocations temporaires. Cette option peut aider à résoudre les problèmes de mémoire.
+
+3. **Test de la configuration** :
+   
+   Après avoir effectué ces modifications, redémarrez votre système et testez une session de suspension et de reprise pour voir si les problèmes graphiques persistent. Si le problème persiste, vous pourriez envisager de revenir à X11, comme certaines configurations peuvent ne pas être totalement compatibles avec Wayland sur certaines versions de pilotes Nvidia.
 
 <br>
 
