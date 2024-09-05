@@ -1,4 +1,4 @@
-# ARCHITECT TUTO
+# ARCHLINUX GUIDE
 
 > [!WARNING]
 > ArchLinux est une distribution DIY (Do It Yourself). Il est crucial d'avoir de solides compétences techniques ou d'être prêt à consulter abondamment la documentation. Il est impensable de rester sur Arch Linux si l'on dépend constamment de l'aide des autres. En cas de problème, il faut absolument être capable de trouver et de réparer soi-même rapidement. Sinon, on risque de devenir dépendant des autres ou de passer des heures à réparer ou réinstaller en boucle.
@@ -6,7 +6,6 @@
 > Extrait de [du WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais)) : "Tandis que de nombreuses distributions GNU/Linux tentent d'être plus conviviales, Arch Linux a toujours été, et restera toujours centrée sur l'utilisateur. Elle est destinée à répondre aux besoins de ceux qui y contribuent, plutôt que d'essayer d'attirer le plus grand nombre. Elle est destinée à l'utilisateur compétent de GNU/Linux ou à toute personne ayant une attitude de bricoleur et disposée à lire la documentation et à résoudre ses propres problèmes."
 >
 > Être sur Arch Linux sans lire la documentation et en étant dépendant des autres va à l'encontre de ce qu'est cette distribution.
-
 
 ## **Table des Matières**
 
@@ -187,11 +186,11 @@ Ajoutez chacune de ces lignes à la fin du fichier :
 pour yay :
 
 ```sh
-alias update-arch='yay'
+alias update-arch='yay && flatpak update'
 ```
 
 ```sh
-alias clean-arch='yay -Sc && yay -Yc'
+alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 ```
 
 pour Paru :
@@ -201,7 +200,7 @@ alias update-arch='paru && flatpak update'
 ```
 
 ```sh
-alias clean-arch='paru -Sc && paru -c'
+alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 ```
 
 Pour tous : 
@@ -295,7 +294,7 @@ Pour permettre le lancement du module Nvidia au démarrage et optimiser les perf
    - **nvidia_drm.fbdev=1** : Active la prise en charge du framebuffer matériel, permettant d'utiliser la résolution d'affichage native en tty. Cette option est expérimentale et n'a pas d'effet sur les ordinateurs portables PRIME, car le framebuffer est géré par l'iGPU.
 
 3. Sauvegardez le fichier et quittez l'éditeur.
-   
+
 #### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
 
 Cette étape est non obligatoire et ne devrait être éffectuée que si on note des problèmes au démarrage.
@@ -373,6 +372,8 @@ Suivez ces étapes pour configurer votre système afin de préserver la mémoire
    
    Après avoir effectué ces modifications, redémarrez votre système et testez une session de suspension et de reprise pour voir si les problèmes graphiques persistent. Si le problème persiste, vous pourriez envisager de revenir à X11, comme certaines configurations peuvent ne pas être totalement compatibles avec Wayland sur certaines versions de pilotes Nvidia.
 
+--- 
+
 <br>
 
 #### AMD <a name="amd"></a>
@@ -388,7 +389,6 @@ AMD ROCM :
 ```sh
 sudo pacman -S rocm-opencl-runtime rocm-hip-runtime
 ```
-
 ---
 
 #### INTEL <a name="intel"></a>
