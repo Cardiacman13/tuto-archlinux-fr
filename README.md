@@ -634,31 +634,31 @@ sudo nano ~/.config/fish/config.fish            # 6. Créez un alias comme pour 
 pour yay :
 
 ```sh
-alias update-arch='yay && flatpak update'
+alias update-arch='yay && flatpak update' --save
 ```
 
 ```sh
-alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused' --save
 ```
 
 pour Paru :
 
 ```sh
-alias update-arch='paru && flatpak update'
+alias update-arch='paru && flatpak update' --save
 ```
 
 ```sh
-alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
+alias clean-arch='paru -Sc && paru -c && flatpak remove --unused' --save
 ```
 
 pour tous : 
 
 ```sh
-alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist' --save
 ```
 
 ```sh
-alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
+alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su' --save
 ```
 
 - ***Redémarrez sauf si fait à l'étape 3***, les alias de tout type ne fonctionnent qu'après le redémarrage du terminal.
