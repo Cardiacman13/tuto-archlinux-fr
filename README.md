@@ -43,10 +43,6 @@
    - [Affichage des performances en jeu](#affichage-des-performances-en-jeu)
 
 5. **[Optimisation](#optimisation)**
-   - [Kernel TKG](#kernel-tkg)
-   - [MESA-TKG](#mesa-tkg)
-   - [NVIDIA-ALL](#nvidia-all)
-   - [Installation Flatpak](#installation-flatpak)
    - [Tutoriel : Configuration du Multiboot avec grub](#tutoriel--configuration-du-multiboot-avec-grub)
    - [Zram](#zram)
 
@@ -186,21 +182,21 @@ Ajoutez chacune de ces lignes à la fin du fichier :
 pour yay :
 
 ```sh
-alias update-arch='yay && flatpak update'
+alias update-arch='yay'
 ```
 
 ```sh
-alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+alias clean-arch='yay -Sc && yay -Yc'
 ```
 
 pour Paru :
 
 ```sh
-alias update-arch='paru && flatpak update'
+alias update-arch='paru'
 ```
 
 ```sh
-alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
+alias clean-arch='paru -Sc && paru -c'
 ```
 
 Pour tous : 
@@ -212,7 +208,11 @@ alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest
 ```sh
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 ```
-   
+
+```sh
+alias reinstall-all-pkg='sudo pacman -S  $(pacman -Qnq)'
+```
+
 Redémarrez le terminal.
 
 --- 
@@ -259,8 +259,9 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 Pour installer les pilotes et utilitaires Nvidia de base, utilisez la commande suivante :
 
 ```sh
-sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader opencl-nvidia lib32-opencl-nvidia
+sudo pacman -S --needed nvidia-open-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader opencl-nvidia lib32-opencl-nvidia
 ```
+Remplacez `nvidia-open-dkms` par `nvidia-dkms` si votre catre Nvidia est de génération Pascal (gtx1000) ou inférieure.
 
 ##### Installation supplémentaire pour PC portable Intel/Nvidia
 
@@ -270,32 +271,7 @@ Si vous avez un [PC portable avec Intel/Nvidia](https://youtu.be/GhsP6btpiiw?si=
 sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
-#### 2. Activer `nvidia_drm modeset=1` et autres options avancées
-
-Pour permettre le lancement du module Nvidia au démarrage et optimiser les performances, procédez comme suit :
-
-1. Ouvrez le fichier de configuration de modprobe pour le module Nvidia :
-
-   ```sh
-   sudo nano /etc/modprobe.d/nvidia.conf
-   ```
-
-2. Ajoutez les lignes suivantes pour activer les différentes options :
-
-   ```plaintext
-   options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02
-   options nvidia_drm modeset=1 fbdev=1
-   ```
-
-   - **NVreg_UsePageAttributeTable=1 (par défaut 0)** : Active une meilleure méthode de gestion de la mémoire (PAT). Cette méthode crée une table de partition à une adresse spécifique et utilise l'architecture mémoire et l'ensemble d'instructions de manière plus efficace. Si votre système prend en charge cette fonctionnalité, elle devrait améliorer les performances du CPU.
-   - **NVreg_InitializeSystemMemoryAllocations=0 (par défaut 1)** : Désactive le nettoyage de l'allocation mémoire système avant de l'utiliser pour le GPU, ce qui peut potentiellement améliorer les performances au détriment de la sécurité. Pour revenir à la valeur par défaut, écrivez `options nvidia NVreg_InitializeSystemMemoryAllocations=1` dans `/etc/modprobe.d/nvidia.conf`.
-   - **NVreg_DynamicPowerManagement=0x02** : Active la gestion dynamique de l'alimentation pour les cartes mobiles de génération Turing, permettant de mettre hors tension le GPU lors des périodes d'inactivité.
-   - **nvidia_drm.modeset=1 (par défaut 0)** : Active la prise en charge de modesetting pour le driver NVIDIA, ce qui est crucial pour le support de Wayland et le bon fonctionnement de PRIME Offload.
-   - **nvidia_drm.fbdev=1** : Active la prise en charge du framebuffer matériel, permettant d'utiliser la résolution d'affichage native en tty. Cette option est expérimentale et n'a pas d'effet sur les ordinateurs portables PRIME, car le framebuffer est géré par l'iGPU.
-
-3. Sauvegardez le fichier et quittez l'éditeur.
-
-#### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
+#### 2. Charger les modules Nvidia en priorité au lancement d'Arch :
 
 Cette étape est non obligatoire et ne devrait être éffectuée que si on note des problèmes au démarrage.
    
@@ -315,13 +291,13 @@ Exemple si utilisation de btrfs :
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
-#### 4. Débloquer Wayland Si vous etes sur Gnome:
+#### 3. Débloquer Wayland Si vous etes sur Gnome:
 
 ```sh
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 ```
 
-#### 5. Reconstruction de l'initramfs :
+#### 4. Reconstruction de l'initramfs :
 
 Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de configurer le hook, nous devons déclencher manuellement la reconstruction de l'initramfs :
 
@@ -329,7 +305,7 @@ Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de confi
 sudo mkinitcpio -P
 ```
 
-#### 6. Dynamic Boost :
+#### 5. Dynamic Boost :
 
 Si votre PC portable est compatible Dynamic Bosst activez :
 
@@ -339,13 +315,7 @@ sudo systemctl enable --now nvidia-powerd
 
 Vérifiez bien qu'il est compatible.
 
-#### 7. Gestion des problèmes après la reprise de la suspension avec une carte Nvidia
-
-Si vous rencontrez des problèmes de distorsion graphique ou de difficulté à focaliser sur la bonne fenêtre après une reprise de la suspension sur un système utilisant une carte Nvidia avec Wayland, il peut être utile de configurer votre système pour préserver la mémoire vidéo après la suspension.
-
-#### Préservation de la mémoire vidéo après la suspension
-
-Suivez ces étapes pour configurer votre système afin de préserver la mémoire vidéo après la suspension :
+#### 6. Veille 
 
 1. **Activer les services système nécessaires** :
    
@@ -367,8 +337,14 @@ Suivez ces étapes pour configurer votre système afin de préserver la mémoire
 
    - **NVreg_PreserveVideoMemoryAllocations=1** : Cette option permet de préserver les allocations de mémoire vidéo pendant la suspension, réduisant ainsi les problèmes graphiques lors de la reprise.
    - **NVreg_TemporaryFilePath=/var/tmp** : Définit le chemin du fichier temporaire utilisé par le pilote Nvidia pour gérer les allocations temporaires. Cette option peut aider à résoudre les problèmes de mémoire.
+   
+3. Rebuild de l’initramfs :
 
-3. **Test de la configuration** :
+   ```bash
+   sudo mkinitcpio -P
+   ```
+   
+4. **Test de la configuration** :
    
    Après avoir effectué ces modifications, redémarrez votre système et testez une session de suspension et de reprise pour voir si les problèmes graphiques persistent. Si le problème persiste, vous pourriez envisager de revenir à X11, comme certaines configurations peuvent ne pas être totalement compatibles avec Wayland sur certaines versions de pilotes Nvidia.
 
@@ -718,6 +694,8 @@ Ici, nous installons GOverlay qui est une interface graphique pour configurer Ma
 sudo pacman -S goverlay
 ```
 
+Ajoutez `lib32-mangihud` si vous jouez à de vieux jeux 32bit.
+
 --- 
 
 <br>
@@ -725,77 +703,6 @@ sudo pacman -S goverlay
 ## **BONUS** : <a name="optimisation"></a>
 
 <br>
-
-### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) <a name="kernel-tkg"></a>
-
-> Cette étape est destinée aux utilisateurs avancés :star:
-
-[KERNEL TKG](https://github.com/Frogging-Family) est un noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
-
-Vidéo associée :
-[Kernel TKG sur Arch + Améliorer ses perfs](https://youtu.be/43yYIWMnDJA)
-
-```sh
-git clone https://github.com/Frogging-Family/linux-tkg.git
-cd linux-tkg
-makepkg -si
-```
-
---- 
-
-<br>
-
-### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) <a name="mesa-tkg"></a>
-
-> [!WARNING]
-> Cette étape est destinée aux utilisateurs avancés :star:
-
-Comme le noyau TKG, mais pour Mesa, une version patchée pour ajouter quelques correctifs et optimisations.
-Très utile pour les joueurs AMD, sans intérêt pour les joueurs Nvidia.
-
-```sh
-git clone https://github.com/Frogging-Family/mesa-git.git
-cd mesa-git
-makepkg -si
-```
-
-Dites oui à tout pour tout écraser avec les nouveaux paquets.
-
---- 
-
-<br>
-
-### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) <a name="nvidia-all"></a>
-
-> [!WARNING]
-> Cette étape est destinée aux utilisateurs avancés :star:
-
-Nvidia-all est une intégration du pilote nvidia par TkG. Il comprend des patchs de support pour les nouveaux noyaux. Il vous permet de sélectionner la version du pilote que vous souhaitez installer, qu'il s'agisse de la dernière version officielle, d'une version bêta, de la version Vulkan, etc.
-
-[Vous utilisez Arch et Nvidia, regardez ça !](https://youtu.be/T0laE8gPtfY)
-
-```sh
-git clone https://github.com/Frogging-Family/nvidia-all.git
-cd nvidia-all
-makepkg -si
-```
-
-Dites oui à tout pour tout écraser avec les nouveaux paquets.
-
---- 
-
-<br>
-
-### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak) <a name="installation-flatpak"></a>
-
-Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est promu comme offrant un environnement "sandbox" dans lequel les utilisateurs peuvent exécuter des logiciels isolément du reste du système.
-
-[MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
-
-```sh
-sudo pacman -S flatpak flatpak-kcm
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-```
 
 ### Tutoriel : Configuration du Multiboot avec grub <a name="tutoriel--configuration-du-multiboot-avec-grub"></a>
 
